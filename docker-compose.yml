@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+  web:
+    build:
+      context: .
+    command: serve --dev-addr=0.0.0.0:8080
+    restart: always
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/docs
+
+
+
+
+
+
+# version: '3.8'
+# services:
+#   mkdocs:
+#     build: .
+#     # image: squidfunk/mkdocs-material
+#     # command: --serve
+#     volumes:
+#       - .:/docs
+#     ports:
+#       - "8080:8000"
+#     environment:
+#       - PWD=/docs
+#     stdin_open: true
+#     tty: true
