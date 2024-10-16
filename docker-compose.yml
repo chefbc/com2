@@ -3,10 +3,10 @@ services:
   web:
     build:
       context: .
-    command: "serve --dev-addr=0.0.0.0:8080"
+    command: "serve --dev-addr=0.0.0.0:8082"
     restart: always
     ports:
-      - 8080:8080
+      - 8082:8082
     volumes:
       - .:/docs
 

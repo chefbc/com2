@@ -182,6 +182,8 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
+
+# dynamic with no tree
 # Page tree
 nav:
   - Home: index.md
@@ -293,3 +295,8 @@ nav:
     - web/ssh-snippet.md
     - web/welcome.md
     - web/zachman.md
+    - web/git.md
+    - web/gitlab.md
+    - web/docker.md
+
+
