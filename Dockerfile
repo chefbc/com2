@@ -1,6 +1,5 @@
 # Dockerfile used for local development of the site.
-FROM python:3.11-alpine
-
+FROM python:latest
 
 COPY *requirements.txt ./
 

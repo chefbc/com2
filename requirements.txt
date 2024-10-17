@@ -1,3 +1,2 @@
-mkdocs
 mkdocs-material
 mkdocs-bootstrap-tables-plugin

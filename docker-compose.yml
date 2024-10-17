@@ -1,16 +1,28 @@
-version: '3.9'
 services:
-  web:
-    build:
-      context: .
-    command: "serve --dev-addr=0.0.0.0:8082"
-    restart: always
-    ports:
-      - 8082:8082
+  # web:
+  #   build:
+  #     context: .
+  #   command: "mkdocs serve --dev-addr=0.0.0.0:5000"
+  #   restart: always
+  #   ports:
+  #     - 5000:5000
+  #   volumes:
+  #     - ./docs:/docs
+  #     - ./overrides:/overrides
+  #     - ./mkdocs.yml:/mkdocs.yml
+
+  docs:
+    image: python:latest
     volumes:
-      - .:/docs
-
-
+      - ./docs:/docs
+      - ./overrides:/overrides
+      - ./mkdocs.yml:/mkdocs.yml
+      - ./requirements.txt:/requirements.txt
+    command: >
+      sh -c " pip install -r requirements.txt &&
+              mkdocs serve --dev-addr=0.0.0.0:8000"
+    ports:
+      - 8000:8000
 
 
 
