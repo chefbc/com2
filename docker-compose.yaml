@@ -1,27 +1,29 @@
 services:
-  # web:
-  #   build:
-  #     context: .
-  #   command: "mkdocs serve --dev-addr=0.0.0.0:5000"
-  #   restart: always
-  #   ports:
-  #     - 5000:5000
+  web:
+    build:
+      context: .
+    command: "mkdocs serve --dev-addr=0.0.0.0:5000"
+    restart: always
+    ports:
+      - 5000:5000
+    volumes:
+      - ./docs:/app/docs
+      - ./overrides:/app/overrides
+      - ./mkdocs.yml:/app/mkdocs.yml
+
+  # docs:
+  #   image: python:latest
   #   volumes:
   #     - ./docs:/docs
   #     - ./overrides:/overrides
-  #     - ./mkdocs.yml:/mkdocs.yml
-
-  docs:
-    image: python:latest
-    volumes:
-      - ./docs:/docs
-      - ./overrides:/overrides
-      - ./mkdocs.yml:/mkdocs.yml
-    command: >
-      sh -c " pip install mkdocs-material &&
-              mkdocs serve --dev-addr=0.0.0.0:5000"
-    ports:
-      - 5000:5000
+  #     # - ./requirements.txt:/requirements.txt
+  #     # - ./mkdocs.yml:/mkdocs.yml
+  #   # command: >
+  #   #   sh -c " pip install mkdocs-material &&
+  #   #           mkdocs serve --dev-addr=0.0.0.0:5000"
+  #   command: "mkdocs serve --dev-addr=0.0.0.0:5000"
+  #   ports:
+  #     - 5000:5000
 
 
 

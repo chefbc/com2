@@ -10,12 +10,7 @@ RUN \
     pip install -U -r requirements.txt; \
   fi 
 
-WORKDIR /docs
+WORKDIR /app
 
-# Expose MkDocs development server port
-#EXPOSE 8000
-EXPOSE 8080
+EXPOSE 5000
 
-# Start development server by default
-ENTRYPOINT ["mkdocs"]
-# CMD ["serve", "--dev-addr=0.0.0.0:8000"]
