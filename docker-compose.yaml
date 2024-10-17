@@ -9,7 +9,7 @@ services:
     volumes:
       - ./docs:/app/docs
       - ./overrides:/app/overrides
-      - ./mkdocs.yml:/app/mkdocs.yml
+      # - ./mkdocs.yml:/app/mkdocs.yml
 
   # docs:
   #   image: python:latest
