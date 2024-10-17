@@ -2,7 +2,7 @@
 FROM python:latest
 
 COPY *requirements.txt ./
-COPY *mkdocs.yml ./
+
 
 RUN \
   pip install --no-cache-dir --upgrade pip \
@@ -12,6 +12,7 @@ RUN \
   fi 
 
 WORKDIR /app
+COPY *mkdocs.yml ./
 
 EXPOSE 5000
 
