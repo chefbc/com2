@@ -16,10 +16,9 @@ services:
     volumes:
       - ./docs:/docs
       - ./overrides:/overrides
-      - ./mkdocs.yml:mkdocs.yml
-      - ./requirements.txt:requirements.txt
+      - ./mkdocs.yml:/mkdocs.yml
     command: >
-      sh -c " pip install -r requirements.txt &&
+      sh -c " pip install mkdocs-material &&
               mkdocs serve --dev-addr=0.0.0.0:5000"
     ports:
       - 5000:5000
