@@ -1,0 +1,7 @@
+{
+  "dockerfile": "./Dockerfile",
+  "buildCommand": "",
+  "startCommand": "",
+  "healthCheckPath": "/",
+  "healthCheckTimeout": 60
+}

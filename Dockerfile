@@ -14,5 +14,5 @@ RUN \
 WORKDIR /app
 COPY *mkdocs.yml ./
 
-EXPOSE 5000
+EXPOSE 5001
 

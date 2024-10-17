@@ -2,10 +2,10 @@ services:
   web:
     build:
       context: .
-    command: "mkdocs serve --dev-addr=0.0.0.0:5000"
+    command: "mkdocs serve --dev-addr=0.0.0.0:5001"
     restart: always
     ports:
-      - 5000:5000
+      - 5001:5001
     volumes:
       - ./docs:/app/docs
       - ./overrides:/app/overrides
