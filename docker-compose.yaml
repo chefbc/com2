@@ -10,6 +10,17 @@ services:
       - ./docs:/app/docs
       - ./overrides:/app/overrides
       # - ./mkdocs.yml:/app/mkdocs.yml
+    develop:
+      watch:
+        - action: sync
+          path: ./docs
+          target: /app/docs
+        - action: sync
+          path: ./overrides
+          target: /app/overrides
+        - action: sync
+          path: ./mkdocs.yml
+          target: /app/mkdocs.yml
 
   # docs:
   #   image: python:latest
