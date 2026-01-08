@@ -61,47 +61,111 @@
 
   <!-- Hero for landing page -->
   <section class="mdx-container">
+    <!-- Social media icons -->
+    <div class="mdx-hero__social">
+      <a
+        href="https://facebook.com"
+        title="Facebook"
+        class="mdx-hero__social-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="twemoji">
+          {% include ".icons/fontawesome/brands/facebook.svg" %}
+        </span>
+      </a>
+      <a
+        href="https://twitter.com"
+        title="Twitter"
+        class="mdx-hero__social-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="twemoji">
+          {% include ".icons/fontawesome/brands/twitter.svg" %}
+        </span>
+      </a>
+      <a
+        href="https://github.com"
+        title="GitHub"
+        class="mdx-hero__social-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="twemoji">
+          {% include ".icons/fontawesome/brands/github.svg" %}
+        </span>
+      </a>
+    </div>
+
     <div class="md-grid md-typeset">
       <div class="mdx-hero">
+        <!-- Hero content -->
+        <div class="mdx-hero__content">
+          <h1 class="mdx-hero__title">CHEFBC.COM</h1>
+          <div class="mdx-hero__emoji">
+            <img
+              src="assets/images/bc.png"
+              alt="Chef BC"
+              width="120"
+              height="120"
+              draggable="false"
+            >
+          </div>
+          <p class="mdx-hero__description">{{ config.site_description or "Technical documentation and resources" }}</p>
+          <div class="mdx-hero__actions">
+            <a
+              href="{{ page.next_page.url | url }}"
+              title="{{ page.next_page.title | e }}"
+              class="md-button md-button--primary"
+            >
+              Get Started
+            </a>
+            <a
+              href="{{ 'web/' | url }}"
+              title="Web Resources"
+              class="md-button"
+            >
+              Browse Content
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Hero image -->
-        <div class="mdx-hero__image">
+  <!-- Featured content section -->
+  <section class="mdx-featured">
+    <div class="md-grid md-typeset">
+      <div class="mdx-featured__grid">
+        <!-- Left column: Featured image -->
+        <div class="mdx-featured__image">
           <img
-            src="assets/images/bc.png"
-            alt=""
-            width="420"
-            height="420"
+            src="assets/images/img/computer.jpg"
+            alt="Featured content"
             draggable="false"
           >
         </div>
-        <!-- <div class="mdx-hero__image">
-          <img
-            src="assets/images/bc2.png"
-            alt=""
-            width="1659"
-            height="1200"
-            draggable="false"
-          >
-        </div> -->
-
-        <!-- Hero content -->
-        <div class="mdx-hero__content">
-          <h1>Technical documentation that just works</h1>
-          <p>{{ config.site_description }}. Set up in 5 minutes.</p>
-          <a
-            href="{{ page.next_page.url | url }}"
-            title="{{ page.next_page.title | e }}"
-            class="md-button md-button--primary"
-          >
-            Quick start
-          </a>
-          <a
-            href="{{ 'insiders/' | url }}"
-            title="Material for MkDocs Insiders"
-            class="md-button"
-          >
-            Get Insiders
-          </a>
+        <!-- Right column: Featured content -->
+        <div class="mdx-featured__content">
+          <div class="mdx-featured__tags">
+            <span>DOCUMENTATION</span>
+            <span>GUIDES</span>
+            <span>RESOURCES</span>
+          </div>
+          <h2 class="mdx-featured__title">Welcome to ChefBC Documentation</h2>
+          <p class="mdx-featured__excerpt">
+            Explore technical documentation, guides, and resources covering cloud infrastructure, 
+            development practices, and more. Find what you need quickly and efficiently.
+          </p>
+          <div class="mdx-featured__links">
+            <a href="{{ 'getting-started/' | url }}" class="mdx-featured__link">
+              Getting Started →
+            </a>
+            <a href="{{ 'web/' | url }}" class="mdx-featured__link">
+              Web Resources →
+            </a>
+          </div>
         </div>
       </div>
     </div>
