@@ -107,6 +107,11 @@ plugins:
   # - minify:
   #     minify_html: true
 
+# Watch additional directories for live reloading
+watch:
+  - overrides
+  - docs
+
 # Hooks
 # hooks:
 #   - material/overrides/hooks/shortcodes.py
