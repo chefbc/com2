@@ -31,7 +31,7 @@ repo_name: squidfunk/mkdocs-material
 repo_url: https://github.com/squidfunk/mkdocs-material
 
 # Copyright
-copyright: Copyright &copy; 2026 
+copyright: chefbc.com Copyright &copy; 2026 | All Rights Reserved
 
 # Configuration
 theme:
@@ -119,6 +119,13 @@ watch:
 
 # Additional configuration
 extra:
+  branding:
+    header_logo: assets/images/bc.png
+    header_logo_alt: ChefBC.com
+    hero_emoji: assets/images/bc.png
+    hero_emoji_alt: Chef BC
+    # hero_background: assets/images/img/computer.jpg
+    hero_background: assets/images/img/aryan-dhiman-iGLLtLINSkw-unsplash.jpg
   status:
     new: Recently added
     deprecated: Deprecated

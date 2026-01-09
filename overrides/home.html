@@ -34,6 +34,21 @@
       position: initial;
     }
 
+    /* Position hero behind header and tabs */
+    .mdx-container {
+      position: relative;
+      z-index: 1;
+      margin-top: -4.8rem;
+      padding-top: calc(4.8rem + 2.4rem + 1rem);
+    }
+
+    @media screen and (min-width: 76.25em) {
+      .mdx-container {
+        margin-top: -4.8rem;
+        padding-top: calc(4.8rem + 2.4rem + 1rem);
+      }
+    }
+
     /* Remove spacing, as we cannot hide it completely */
     .md-main__inner {
       margin: 0;

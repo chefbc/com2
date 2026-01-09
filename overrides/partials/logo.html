@@ -1,0 +1,25 @@
+{# Custom logo partial to allow configuring the header logo via mkdocs.yml #}
+{% set branding = config.extra.branding or {} %}
+{% set header_logo = branding.header_logo %}
+{% set header_logo_alt = branding.header_logo_alt | default(config.site_name) %}
+{% set home_url = nav.homepage.url | url if nav and nav.homepage else config.site_url or '/' %}
+
+{% if header_logo %}
+  <a
+    class="md-header__button md-logo"
+    href="{{ home_url }}"
+    aria-label="{{ config.site_name }}"
+  >
+    <img src="{{ header_logo | url }}" alt="{{ header_logo_alt }}" loading="lazy" />
+  </a>
+{% else %}
+  {# Fallback to the theme's configured icon logo #}
+  {% set icon = config.theme.icon.logo or "material/library" %}
+  <a
+    class="md-header__button md-logo"
+    href="{{ home_url }}"
+    aria-label="{{ config.site_name }}"
+  >
+    {% include ".icons/" + icon + ".svg" %}
+  </a>
+{% endif %}
