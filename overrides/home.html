@@ -60,7 +60,8 @@
   </style>
 
   <!-- Hero for landing page -->
-  <section class="mdx-container">
+  {% set hero_bg = config.extra.branding.hero_background | default('assets/images/img/computer.jpg') %}
+  <section class="mdx-container" style="background-image: url('{{ hero_bg | url }}'), linear-gradient(to bottom, rgba(10, 11, 12, 0.95), rgba(10, 11, 12, 0.98) 99%, var(--md-default-bg-color) 99%);">
     <!-- Social media icons -->
     {% if config.extra.social %}
     <div class="mdx-hero__social">
@@ -86,9 +87,11 @@
         <div class="mdx-hero__content">
           <h1 class="mdx-hero__title">CHEFBC.COM</h1>
           <div class="mdx-hero__emoji">
+            {% set hero_emoji = config.extra.branding.hero_emoji | default('assets/images/bc.png') %}
+            {% set hero_emoji_alt = config.extra.branding.hero_emoji_alt | default('Chef BC') %}
             <img
-              src="assets/images/bc.png"
-              alt="Chef BC"
+              src="{{ hero_emoji | url }}"
+              alt="{{ hero_emoji_alt }}"
               width="120"
               height="120"
               draggable="false"

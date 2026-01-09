@@ -275,11 +275,10 @@ pre,
 
 
 .mdx-container {
-    background: url("../../assets/images/img/computer.jpg")
-            no-repeat center center,
-        linear-gradient(to bottom, rgba(10, 11, 12, 0.95), rgba(10, 11, 12, 0.98) 99%, var(--md-default-bg-color) 99%);
-    padding-top: 1rem;
+    background-position: center center;
+    background-repeat: no-repeat;
     background-size: cover;
+    padding-top: 1rem;
     position: relative;
     overflow: hidden;
 }
@@ -301,12 +300,6 @@ pre,
     z-index: 1;
 }
 
-[data-md-color-scheme="slate"] .mdx-container {
-    background: url("../../assets/images/img/computer.jpg")
-            no-repeat center center,
-        linear-gradient(to bottom, rgba(10, 11, 12, 0.95), rgba(36, 39, 49, 0.98) 99%, var(--md-default-bg-color) 99%);
-    background-size: cover;
-}
 
 [data-md-color-scheme="slate"] .mdx-container::before {
     background: rgba(10, 11, 12, 0.8);
@@ -325,7 +318,7 @@ pre,
 .mdx-hero__title {
     color: #ffffff !important;
     font-weight: 400;
-    font-size: 6rem;
+    font-size: 4em;
     margin-bottom: 1.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     letter-spacing: 0.05em;
@@ -334,13 +327,13 @@ pre,
 
 @media screen and (max-width: 29.984375em) {
     .mdx-hero__title {
-        font-size: 2rem;
+        font-size: 2em;
     }
 }
 
 @media screen and (min-width: 30em) and (max-width: 59.984375em) {
     .mdx-hero__title {
-        font-size: 3rem;
+        font-size: 3em;
     }
 }
 
@@ -352,8 +345,17 @@ pre,
 }
 
 .mdx-hero__emoji img {
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 29.984375em) {
+    .mdx-hero__emoji img {
+        width: 120px;
+        height: 120px;
+    }
 }
 
 .mdx-hero__description {
