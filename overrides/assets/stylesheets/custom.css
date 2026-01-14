@@ -727,21 +727,32 @@ pre,
 }
 
 .mdx-featured__content {
-    padding: 1.5rem 0;
+    padding: 0 0 1.5rem 0;
+    align-self: start;
 }
 
 .mdx-featured__tags {
     display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
     margin-bottom: 0.75rem;
+    font-size: 0.6rem;
+}
+
+.mdx-featured__tag-prefix {
+    font-size: inherit;
+    color: var(--md-default-fg-color--lighter);
+    font-weight: 400;
+    text-transform: lowercase;
 }
 
 .mdx-featured__tag-link {
-    font-size: 0.875rem;
+    /* font-size: inherit; */
+    font-size: 0.75rem;
     color: var(--md-primary-fg-color);
     text-decoration: none;
     transition: color 0.3s ease;
+    text-transform: uppercase;
 }
 
 .mdx-featured__tag-link:hover {
@@ -750,14 +761,16 @@ pre,
 }
 
 .mdx-featured__tags span {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
+    /* font-size: 0.75rem; */
+    font-size: inherit;
+    /* font-weight: 700; */
+    text-transform: lowercase;
     letter-spacing: 0.05em;
-    color: var(--md-primary-fg-color);
-    padding: 0.25rem 0.5rem;
-    background-color: var(--md-accent-fg-color--transparent);
-    border-radius: 0.1rem;
+    /* color: var(--md-primary-fg-color); */
+    color: var(--md-default-fg-color--lighter);
+    /* padding: 0.25rem 0.5rem; */
+    /* background-color: var(--md-accent-fg-color--transparent); */
+    /* border-radius: 0.1rem; */
 }
 
 .mdx-featured__title {
@@ -952,7 +965,7 @@ pre,
 .mdx-featured__posts-grid .md-post__link {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    /* height: 100%; */
     text-decoration: none;
     color: inherit;
 }
@@ -1082,15 +1095,14 @@ pre,
 }
 
 .mdx-featured__posts-grid .md-post__category-link {
-    font-size: inherit;
-    color: #2196f3;
+    /* font-size: 0.875rem; */
+    color: var(--md-primary-fg-color);
     text-decoration: none;
-    font-weight: 400;
     transition: color 0.3s ease;
 }
 
 .mdx-featured__posts-grid .md-post__category-link:hover {
-    color: #1976d2;
+    color: var(--md-accent-fg-color);
     text-decoration: underline;
 }
 

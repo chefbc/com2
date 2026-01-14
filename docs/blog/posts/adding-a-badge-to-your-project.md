@@ -1,13 +1,14 @@
 ---
 title: Adding a badge to your project
 date: 2023-11-30
-authors: [squidfunk]
+authors: [squidfunk, chefbc]
 slug: adding-a-badge-to-your-project
 description: >
   Share the love – you can now add a badge to your README, showing that your
   project is built with Material for MkDocs
 categories:
   - General
+  - Wow
 ---
 
 # Adding a :simple-materialformkdocs: badge to your project

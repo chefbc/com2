@@ -166,9 +166,8 @@
           {% set post_categories = featured_post.meta.categories | default(featured_post.meta.tags | default([])) %}
           {% if post_categories %}
           <div class="mdx-featured__tags">
-            {% for category in post_categories[:4] %}
-            <a href="{{ ('blog/category/' + category | lower | replace(' ', '-')) | url }}" class="mdx-featured__tag-link">{{ category }}</a>{% if not loop.last %}, {% endif %}
-            {% endfor %}
+            <span class="mdx-featured__tag-prefix">in</span>
+            <a href="{{ ('blog/category/' + post_categories[0] | lower | replace(' ', '-')) | url }}" class="mdx-featured__tag-link">{{ post_categories[0] }}</a>
           </div>
           {% endif %}
           <h2 class="mdx-featured__title">
@@ -206,9 +205,10 @@
                 {% set post_date_str = post_date.split('T')[0] %}
                 {% set date_parts = post_date_str.split('-') %}
                 {% if date_parts | length == 3 %}
-                  {% set months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %}
+                  {% set months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
                   {% set month_num = date_parts[1] | int %}
-                  <time class="mdx-featured__date">{{ date_parts[2] }} {{ months[month_num - 1] }} {{ date_parts[0] }}</time>
+                  {% set day = date_parts[2] | int %}
+                  <time class="mdx-featured__date">{{ months[month_num - 1] }} {{ day }}, {{ date_parts[0] }}</time>
                 {% else %}
                   <time class="mdx-featured__date">{{ post_date }}</time>
                 {% endif %}
@@ -217,16 +217,17 @@
                 {% set date_str = post_date | string %}
                 {% set date_parts = date_str.split(' ')[0].split('-') %}
                 {% if date_parts | length == 3 %}
-                  {% set months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %}
+                  {% set months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
                   {% set month_num = date_parts[1] | int %}
-                  <time class="mdx-featured__date">{{ date_parts[2] }} {{ months[month_num - 1] }} {{ date_parts[0] }}</time>
+                  {% set day = date_parts[2] | int %}
+                  <time class="mdx-featured__date">{{ months[month_num - 1] }} {{ day }}, {{ date_parts[0] }}</time>
                 {% else %}
                   <time class="mdx-featured__date">{{ date_str }}</time>
                 {% endif %}
               {% endif %}
               {% endif %}
               {% if featured_post.meta.readtime %}
-              <span class="mdx-featured__readtime">• {{ featured_post.meta.readtime }} min read</span>
+              <span class="mdx-featured__readtime"> • {{ featured_post.meta.readtime }} min read</span>
               {% endif %}
             </div>
           </div>
@@ -294,9 +295,10 @@
                       {% set post_date_str = post_date.split('T')[0] %}
                       {% set date_parts = post_date_str.split('-') %}
                       {% if date_parts | length == 3 %}
-                        {% set months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %}
+                        {% set months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
                         {% set month_num = date_parts[1] | int %}
-                        <time class="md-post__date">{{ date_parts[2] | int }} {{ months[month_num - 1] | upper }} {{ date_parts[0] }}</time>
+                        {% set day = date_parts[2] | int %}
+                        <time class="md-post__date">{{ months[month_num - 1] }} {{ day }}, {{ date_parts[0] }}</time>
                       {% else %}
                         <time class="md-post__date">{{ post_date }}</time>
                       {% endif %}
@@ -305,16 +307,17 @@
                       {% set date_str = post_date | string %}
                       {% set date_parts = date_str.split(' ')[0].split('-') %}
                       {% if date_parts | length == 3 %}
-                        {% set months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %}
+                        {% set months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
                         {% set month_num = date_parts[1] | int %}
-                        <time class="md-post__date">{{ date_parts[2] | int }} {{ months[month_num - 1] | upper }} {{ date_parts[0] }}</time>
+                        {% set day = date_parts[2] | int %}
+                        <time class="md-post__date">{{ months[month_num - 1] }} {{ day }}, {{ date_parts[0] }}</time>
                       {% else %}
                         <time class="md-post__date">{{ date_str }}</time>
                       {% endif %}
                     {% endif %}
                     {% endif %}
                     {% if post.meta.readtime %}
-                    <span class="md-post__readtime">{{ post.meta.readtime }} MIN READ</span>
+                    <span class="md-post__readtime"> • {{ post.meta.readtime }} MIN READ</span>
                     {% endif %}
                   </div>
                 </div>
