@@ -113,7 +113,8 @@ watch:
   - docs
 
 # Hooks
-# hooks:
+hooks:
+  - overrides/hooks/blog_posts.py
 #   - material/overrides/hooks/shortcodes.py
 #   - material/overrides/hooks/translations.py
 

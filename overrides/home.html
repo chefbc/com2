@@ -135,41 +135,199 @@
   </section>
 
   <!-- Featured content section -->
+  {# Use blog_posts from hook (already sorted by date, newest first, limited to 11) #}
+  {% set blog_posts = blog_posts | default([]) %}
+  {% set featured_post = blog_posts[0] if blog_posts | length > 0 else none %}
+  {% set small_posts = blog_posts[1:11] if blog_posts | length > 1 else [] %}
+
+  {% if featured_post %}
   <section class="mdx-featured">
-    <div class="md-grid md-typeset">
+    <div class="mdx-featured__container">
+      <!-- Large featured post -->
       <div class="mdx-featured__grid">
         <!-- Left column: Featured image -->
         <div class="mdx-featured__image">
-          <img
-            src="assets/images/img/computer.jpg"
-            alt="Featured content"
-            draggable="false"
-          >
+          {% set featured_image = featured_post.meta.image | default('assets/images/img/computer.jpg') %}
+          {% if featured_image[:4] == 'img/' %}
+            {% set featured_image = 'assets/images/' + featured_image %}
+          {% elif featured_image[:7] != 'assets/' and featured_image[:4] != 'http' %}
+            {% set featured_image = 'assets/images/img/' + featured_image %}
+          {% endif %}
+          <a href="{{ featured_post.url | url }}">
+            <img
+              src="{{ featured_image | url }}"
+              alt="{{ featured_post.title | e }}"
+              draggable="false"
+            >
+          </a>
         </div>
         <!-- Right column: Featured content -->
         <div class="mdx-featured__content">
+          {% set post_categories = featured_post.meta.categories | default(featured_post.meta.tags | default([])) %}
+          {% if post_categories %}
           <div class="mdx-featured__tags">
-            <span>DOCUMENTATION</span>
-            <span>GUIDES</span>
-            <span>RESOURCES</span>
+            {% for category in post_categories[:4] %}
+            <a href="{{ ('blog/category/' + category | lower | replace(' ', '-')) | url }}" class="mdx-featured__tag-link">{{ category }}</a>{% if not loop.last %}, {% endif %}
+            {% endfor %}
           </div>
-          <h2 class="mdx-featured__title">Welcome to ChefBC Documentation</h2>
+          {% endif %}
+          <h2 class="mdx-featured__title">
+            <a href="{{ featured_post.url | url }}">{{ featured_post.title | e }}</a>
+          </h2>
           <p class="mdx-featured__excerpt">
-            Explore technical documentation, guides, and resources covering cloud infrastructure, 
-            development practices, and more. Find what you need quickly and efficiently.
+            {% if featured_post.meta.excerpt %}
+              {{ featured_post.meta.excerpt | e }}
+            {% elif featured_post.content %}
+              {{ featured_post.content | striptags | truncate(200) }}
+            {% else %}
+              Read more about this topic.
+            {% endif %}
           </p>
-          <div class="mdx-featured__links">
-            <a href="{{ 'getting-started/' | url }}" class="mdx-featured__link">
-              Getting Started →
-            </a>
-            <a href="{{ 'web/' | url }}" class="mdx-featured__link">
-              Web Resources →
-            </a>
+          <div class="mdx-featured__meta">
+            {% set post_authors = featured_post.meta.authors | default(featured_post.meta.author | default([])) %}
+            {% if post_authors %}
+            <div class="mdx-featured__authors">
+              {% for author in post_authors[:2] %}
+              <a href="{{ ('blog/author/' + author | lower | replace(' ', '-')) | url }}" class="mdx-featured__author-link">
+                {% set author_icon = 'assets/images/authors/' + author | lower | replace(' ', '-') + '.png' %}
+                <span class="mdx-featured__author-avatar">
+                  <img src="{{ author_icon | url }}" alt="{{ author }}" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                  <span class="mdx-featured__author-initial">{{ author[0] | upper }}</span>
+                </span>
+                <span class="mdx-featured__author-name">{{ author }}</span>
+              </a>{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            </div>
+            {% endif %}
+            <div class="mdx-featured__meta-details">
+              {% if featured_post.meta.date %}
+              {% set post_date = featured_post.meta.date %}
+              {% if post_date is string %}
+                {% set post_date_str = post_date.split('T')[0] %}
+                {% set date_parts = post_date_str.split('-') %}
+                {% if date_parts | length == 3 %}
+                  {% set months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %}
+                  {% set month_num = date_parts[1] | int %}
+                  <time class="mdx-featured__date">{{ date_parts[2] }} {{ months[month_num - 1] }} {{ date_parts[0] }}</time>
+                {% else %}
+                  <time class="mdx-featured__date">{{ post_date }}</time>
+                {% endif %}
+              {% else %}
+                {# For non-string dates, convert to string and format #}
+                {% set date_str = post_date | string %}
+                {% set date_parts = date_str.split(' ')[0].split('-') %}
+                {% if date_parts | length == 3 %}
+                  {% set months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %}
+                  {% set month_num = date_parts[1] | int %}
+                  <time class="mdx-featured__date">{{ date_parts[2] }} {{ months[month_num - 1] }} {{ date_parts[0] }}</time>
+                {% else %}
+                  <time class="mdx-featured__date">{{ date_str }}</time>
+                {% endif %}
+              {% endif %}
+              {% endif %}
+              {% if featured_post.meta.readtime %}
+              <span class="mdx-featured__readtime">• {{ featured_post.meta.readtime }} min read</span>
+              {% endif %}
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Small posts grid -->
+      {% if small_posts | length > 0 %}
+      <div class="mdx-featured__posts-grid">
+        {% for post in small_posts %}
+        <article class="md-post md-post--excerpt">
+          <a href="{{ post.url | url }}" class="md-post__link">
+            {% set post_image = post.meta.image | default('assets/images/img/computer.jpg') %}
+            {% if post_image[:4] == 'img/' %}
+              {% set post_image = 'assets/images/' + post_image %}
+            {% elif post_image[:7] != 'assets/' and post_image[:4] != 'http' %}
+              {% set post_image = 'assets/images/img/' + post_image %}
+            {% endif %}
+            <div class="md-post__image">
+              <img
+                src="{{ post_image | url }}"
+                alt="{{ post.title | e }}"
+                draggable="false"
+              >
+            </div>
+            <div class="md-post__content">
+              {% set post_categories = post.meta.categories | default(post.meta.tags | default([])) %}
+              {% if post_categories %}
+              <div class="md-post__category-section">
+                <span class="md-post__category-prefix">in</span>
+                <a href="{{ ('blog/category/' + post_categories[0] | lower | replace(' ', '-')) | url }}" class="md-post__category-link">{{ post_categories[0] | upper }}</a>
+              </div>
+              {% endif %}
+              <h3 class="md-post__title">{{ post.title | e }}</h3>
+              {% if post.meta.excerpt or post.content %}
+              <p class="md-post__excerpt">
+                {% if post.meta.excerpt %}
+                  {{ post.meta.excerpt | e }}
+                {% elif post.content %}
+                  {{ post.content | striptags | truncate(120) }}
+                {% endif %}
+              </p>
+              {% endif %}
+              <div class="md-post__meta">
+                <div class="md-post__meta-details">
+                  <div class="md-post__author-line">
+                    {% set post_authors = post.meta.authors | default(post.meta.author | default([])) %}
+                    {% if post_authors %}
+                    {% for author in post_authors[:1] %}
+                    <a href="{{ ('blog/author/' + author | lower | replace(' ', '-')) | url }}" class="md-post__author">
+                      {% set author_icon = 'assets/images/authors/' + author | lower | replace(' ', '-') + '.png' %}
+                      <span class="md-post__author-avatar">
+                        <img src="{{ author_icon | url }}" alt="{{ author }}" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                        <span class="md-post__author-initial">{{ author[0] | upper }}</span>
+                      </span>
+                      <span class="md-post__author-name">{{ author | upper }}</span>
+                    </a>
+                    {% endfor %}
+                    {% endif %}
+                  </div>
+                  <div class="md-post__meta-line">
+                    {% if post.meta.date %}
+                    {% set post_date = post.meta.date %}
+                    {% if post_date is string %}
+                      {% set post_date_str = post_date.split('T')[0] %}
+                      {% set date_parts = post_date_str.split('-') %}
+                      {% if date_parts | length == 3 %}
+                        {% set months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %}
+                        {% set month_num = date_parts[1] | int %}
+                        <time class="md-post__date">{{ date_parts[2] | int }} {{ months[month_num - 1] | upper }} {{ date_parts[0] }}</time>
+                      {% else %}
+                        <time class="md-post__date">{{ post_date }}</time>
+                      {% endif %}
+                    {% else %}
+                      {# For non-string dates, convert to string and format #}
+                      {% set date_str = post_date | string %}
+                      {% set date_parts = date_str.split(' ')[0].split('-') %}
+                      {% if date_parts | length == 3 %}
+                        {% set months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %}
+                        {% set month_num = date_parts[1] | int %}
+                        <time class="md-post__date">{{ date_parts[2] | int }} {{ months[month_num - 1] | upper }} {{ date_parts[0] }}</time>
+                      {% else %}
+                        <time class="md-post__date">{{ date_str }}</time>
+                      {% endif %}
+                    {% endif %}
+                    {% endif %}
+                    {% if post.meta.readtime %}
+                    <span class="md-post__readtime">{{ post.meta.readtime }} MIN READ</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </article>
+        {% endfor %}
+      </div>
+      {% endif %}
     </div>
   </section>
+  {% endif %}
 {% endblock %}
 
 <!-- Content -->
