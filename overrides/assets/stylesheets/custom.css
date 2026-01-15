@@ -352,9 +352,12 @@ pre,
 
 @media screen and (min-width: 30em) and (max-width: 59.984375em) {
     .mdx-hero__title {
-        font-size: 3em;
+        font-size: 4em;
     }
 }
+
+
+.md-typeset h1
 
 .mdx-hero__emoji {
     margin: 1.5rem 0;
