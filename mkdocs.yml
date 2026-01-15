@@ -27,8 +27,8 @@ site_description: >-
   minutes – searchable, customizable, in 60+ languages, for all devices
 
 # Repository
-repo_name: squidfunk/mkdocs-material
-repo_url: https://github.com/squidfunk/mkdocs-material
+#repo_name: squidfunk/mkdocs-material
+#repo_url: https://github.com/squidfunk/mkdocs-material
 
 # Copyright
 copyright: chefbc.com Copyright &copy; 2026 | All Rights Reserved
