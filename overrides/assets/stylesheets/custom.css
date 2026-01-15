@@ -16,38 +16,22 @@ pre,
     font-family: "Roboto Mono", "Courier New", monospace !important;
 }
 
-/* Make header transparent */
-.md-header {
-    background-color: transparent !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    position: relative;
-    z-index: 2;
+/* Header and tabs are now only transparent on home page via inline styles in home.html */
+
+/* Make md-main full width */
+.md-main {
+    width: 100%;
+    max-width: 100%;
 }
 
-.md-header__inner {
-    background-color: rgba(0, 0, 0, 0.1) !important;
+.md-main__inner {
+    max-width: 100%;
+    width: 100%;
 }
 
-[data-md-color-scheme="slate"] .md-header__inner {
-    background-color: rgba(0, 0, 0, 0.2) !important;
-}
-
-/* Make tabs transparent */
-.md-tabs {
-    background-color: transparent !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    position: relative;
-    z-index: 2;
-}
-
-.md-tabs__inner {
-    background-color: rgba(0, 0, 0, 0.1) !important;
-}
-
-[data-md-color-scheme="slate"] .md-tabs__inner {
-    background-color: rgba(0, 0, 0, 0.2) !important;
+/* Remove max-width constraint from md-grid to allow full width content */
+.md-grid {
+    max-width: 100%;
 }
 
 @keyframes heart {
@@ -800,7 +784,7 @@ pre,
 .mdx-featured__excerpt {
     font-size: 1rem;
     line-height: 1.6;
-    color: var(--md-default-fg-color--lighter);
+    /* color: var(--md-default-fg-color--lighter); */
     margin-bottom: 1rem;
 }
 

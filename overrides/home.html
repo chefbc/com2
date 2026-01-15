@@ -32,6 +32,32 @@
     /* Application header should be static for the landing page */
     .md-header {
       position: initial;
+      background-color: transparent !important;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .md-header__inner {
+      background-color: rgba(0, 0, 0, 0.1) !important;
+    }
+
+    [data-md-color-scheme="slate"] .md-header__inner {
+      background-color: rgba(0, 0, 0, 0.2) !important;
+    }
+
+    /* Make tabs transparent on home page */
+    .md-tabs {
+      background-color: transparent !important;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .md-tabs__inner {
+      background-color: rgba(0, 0, 0, 0.1) !important;
+    }
+
+    [data-md-color-scheme="slate"] .md-tabs__inner {
+      background-color: rgba(0, 0, 0, 0.2) !important;
     }
 
     /* Position hero behind header and tabs */
