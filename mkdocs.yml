@@ -144,6 +144,18 @@ extra:
       link: https://fosstodon.org/@squidfunk
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/squidfunk
+  # Announcement bar configuration
+  # Set enabled: false to hide the announcement bar
+  # Use 'text' for plain text, or 'html' for rich HTML content
+  announcement:
+    enabled: true
+    # Simple text announcement
+    # text: "Welcome to ChefBC.com! Check out our latest updates."
+    # Or use HTML for rich content with links and icons
+    # Note: HTML only, Jinja2 templates won't work here
+    html: >
+      <strong>Welcome!</strong> Check out our latest updates on
+      <a href="https://github.com/chefbc">GitHub</a>
   generator: false
 
 # Extensions
