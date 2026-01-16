@@ -898,37 +898,46 @@ pre,
 
 /* Posts grid for smaller posts */
 .mdx-featured__posts-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 1.5rem;
     margin-top: 2.5rem;
-    align-items: start;
+    
+    /* align-items: stretch; */
+}
+
+.mdx-featured__posts-grid .md-post {
+    flex: 1 1 300px;
+    min-width: 0;
+    /* align-self: stretch; */
 }
 
 @media screen and (max-width: 76.25em) {
-    .mdx-featured__posts-grid {
-        grid-template-columns: repeat(4, 1fr);
+    .mdx-featured__posts-grid .md-post {
+        flex: 1 1 280px;
     }
 }
 
 @media screen and (max-width: 59.984375em) {
     .mdx-featured__posts-grid {
-        grid-template-columns: repeat(3, 1fr);
         gap: 1.25rem;
         margin-top: 2rem;
+    }
+    
+    .mdx-featured__posts-grid .md-post {
+        flex: 1 1 250px;
     }
 }
 
 @media screen and (max-width: 44.984375em) {
-    .mdx-featured__posts-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .mdx-featured__posts-grid .md-post {
+        flex: 1 1 200px;
     }
 }
 
 @media screen and (max-width: 29.984375em) {
-    .mdx-featured__posts-grid {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
+    .mdx-featured__posts-grid .md-post {
+        flex: 1 1 100%;
     }
 }
 
@@ -939,9 +948,9 @@ pre,
     overflow: hidden;
     box-shadow: var(--md-shadow-z1);
     transition: all 0.3s ease;
-    height: 100%;
     display: flex;
     flex-direction: column;
+    min-height: 100%;
 }
 
 .mdx-featured__posts-grid .md-post:hover {
@@ -952,7 +961,8 @@ pre,
 .mdx-featured__posts-grid .md-post__link {
     display: flex;
     flex-direction: column;
-    /* height: 100%; */
+    /* flex: 1 1 auto; */
+    min-height: 0;
     text-decoration: none;
     color: inherit;
 }
@@ -978,11 +988,17 @@ pre,
 }
 
 .mdx-featured__posts-grid .md-post__content {
-    padding: 1.5rem;
-    flex: 1;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    /* flex: 1 1 auto; */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: stretch;
+    min-height: 0;
+}
+
+.mdx-featured__posts-grid .md-post__content > *:first-child {
+    margin-top: 0;
 }
 
 .mdx-featured__posts-grid .md-post__meta {
@@ -999,6 +1015,7 @@ pre,
     align-items: center;
     gap: 0.25rem;
     margin-bottom: 0.75rem;
+    margin-top: 0;
     font-size: 0.6rem;
 }
 
