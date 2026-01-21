@@ -10,6 +10,8 @@ services:
       - ./docs:/app/docs
       - ./overrides:/app/overrides
       - ./mkdocs.yml:/app/mkdocs.yml
+    env_file:
+      - ./.env
 
   # docs:
   #   image: python:latest

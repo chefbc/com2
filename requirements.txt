@@ -1,2 +1,5 @@
 mkdocs-material
 mkdocs-bootstrap-tables-plugin
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib

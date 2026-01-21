@@ -115,6 +115,7 @@ watch:
 # Hooks
 hooks:
   - overrides/hooks/blog_posts.py
+  - overrides/hooks/reviews.py
 #   - material/overrides/hooks/shortcodes.py
 #   - material/overrides/hooks/translations.py
 

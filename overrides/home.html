@@ -359,12 +359,37 @@
   {% endif %}
 
   <!-- Reviews Scroller Section -->
+  {% set reviews = reviews | default([]) %}
+  {% if reviews | length > 0 %}
   <section class="mdx-reviews">
     <div class="mdx-reviews__container">
       <h2 class="mdx-reviews__title">What Our Customers Say</h2>
       <div class="mdx-reviews__scroller" id="reviews-scroller">
         <div class="mdx-reviews__track" id="reviews-track">
-          <!-- Reviews will be loaded here by JavaScript -->
+          {% for review in reviews %}
+          <div class="mdx-reviews__card" data-index="{{ loop.index0 }}">
+            <div class="mdx-reviews__header">
+              <div class="mdx-reviews__author">{{ review.author | e }}</div>
+              <div class="mdx-reviews__rating">
+                {% set rating = review.rating | int %}
+                {% if rating >= 1 %}⭐{% endif %}
+                {% if rating >= 2 %}⭐{% endif %}
+                {% if rating >= 3 %}⭐{% endif %}
+                {% if rating >= 4 %}⭐{% endif %}
+                {% if rating >= 5 %}⭐{% endif %}
+              </div>
+            </div>
+            <div class="mdx-reviews__date">{{ (review.relative_time or review.time or '') | e }}</div>
+            <div class="mdx-reviews__text">
+              {% set review_paragraphs = review.text.split('\n\n') %}
+              {% for paragraph in review_paragraphs %}
+                {% if paragraph %}
+                  <p>{{ paragraph | e }}</p>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
         </div>
       </div>
       <div class="mdx-reviews__controls">
@@ -383,71 +408,32 @@
   </section>
 
   <script>
-    // Load and display reviews
+    // Reviews scroller navigation
     (function() {
-      const reviewsPath = '{{ "reviews.json" | url }}';
       const track = document.getElementById('reviews-track');
       const prevBtn = document.getElementById('reviews-prev');
       const nextBtn = document.getElementById('reviews-next');
-      const scroller = document.getElementById('reviews-scroller');
       
-      let reviews = [];
+      if (!track) return;
+      
+      const cards = track.querySelectorAll('.mdx-reviews__card');
       let currentIndex = 0;
 
-      // Load reviews from JSON
-      fetch(reviewsPath)
-        .then(response => response.json())
-        .then(data => {
-          reviews = data;
-          renderReviews();
-        })
-        .catch(error => {
-          console.error('Error loading reviews:', error);
-          track.innerHTML = '<p class="mdx-reviews__error">Unable to load reviews at this time.</p>';
-        });
-
-      function renderReviews() {
-        if (!track || reviews.length === 0) return;
-        
-        track.innerHTML = reviews.map((review, index) => {
-          const stars = '⭐'.repeat(review.rating || 5);
-          const text = review.text.replace(/\n\n/g, '</p><p>');
-          return `
-            <div class="mdx-reviews__card" data-index="${index}">
-              <div class="mdx-reviews__header">
-                <div class="mdx-reviews__author">${escapeHtml(review.author)}</div>
-                <div class="mdx-reviews__rating">${stars}</div>
-              </div>
-              <div class="mdx-reviews__date">${escapeHtml(review.relative_time || review.time || '')}</div>
-              <div class="mdx-reviews__text">
-                <p>${escapeHtml(text)}</p>
-              </div>
-            </div>
-          `;
-        }).join('');
-      }
-
-      function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-      }
-
       function scrollToReview(index) {
-        if (!track || reviews.length === 0) return;
-        currentIndex = Math.max(0, Math.min(index, reviews.length - 1));
-        const card = track.querySelector(`[data-index="${currentIndex}"]`);
+        if (cards.length === 0) return;
+        currentIndex = Math.max(0, Math.min(index, cards.length - 1));
+        const card = cards[currentIndex];
         if (card) {
           card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
       }
 
       function nextReview() {
-        scrollToReview((currentIndex + 1) % reviews.length);
+        scrollToReview((currentIndex + 1) % cards.length);
       }
 
       function prevReview() {
-        scrollToReview((currentIndex - 1 + reviews.length) % reviews.length);
+        scrollToReview((currentIndex - 1 + cards.length) % cards.length);
       }
 
       // Event listeners
@@ -455,6 +441,7 @@
       if (prevBtn) prevBtn.addEventListener('click', prevReview);
     })();
   </script>
+  {% endif %}
 
   <style>
     .mdx-reviews {
