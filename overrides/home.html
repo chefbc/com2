@@ -372,11 +372,11 @@
               <div class="mdx-reviews__author">{{ review.author | e }}</div>
               <div class="mdx-reviews__rating">
                 {% set rating = review.rating | int %}
-                {% if rating >= 1 %}⭐{% endif %}
-                {% if rating >= 2 %}⭐{% endif %}
-                {% if rating >= 3 %}⭐{% endif %}
-                {% if rating >= 4 %}⭐{% endif %}
-                {% if rating >= 5 %}⭐{% endif %}
+                {% if rating >= 1 %}<span class="mdx-reviews__star">{% include ".icons/octicons/star-fill-16.svg" %}</span>{% endif %}
+                {% if rating >= 2 %}<span class="mdx-reviews__star">{% include ".icons/octicons/star-fill-16.svg" %}</span>{% endif %}
+                {% if rating >= 3 %}<span class="mdx-reviews__star">{% include ".icons/octicons/star-fill-16.svg" %}</span>{% endif %}
+                {% if rating >= 4 %}<span class="mdx-reviews__star">{% include ".icons/octicons/star-fill-16.svg" %}</span>{% endif %}
+                {% if rating >= 5 %}<span class="mdx-reviews__star">{% include ".icons/octicons/star-fill-16.svg" %}</span>{% endif %}
               </div>
             </div>
             <div class="mdx-reviews__date">{{ (review.relative_time or review.time or '') | e }}</div>
@@ -542,8 +542,23 @@
     }
 
     .mdx-reviews__rating {
-      font-size: 1.2rem;
-      line-height: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.125rem;
+    }
+
+    .mdx-reviews__star {
+      display: inline-flex;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+      color: var(--md-primary-fg-color);
+    }
+
+    .mdx-reviews__star svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
     }
 
     .mdx-reviews__date {
