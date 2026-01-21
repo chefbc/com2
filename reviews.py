@@ -271,7 +271,8 @@ class GoogleReviewsFetcher:
             # Generate stars
             stars = '⭐' * int(rating) if rating else ''
             
-            markdown += f"## Review {i}: {author} {stars}\n\n"
+            #markdown += f"## Review {i}: {author} {stars}\n\n"
+            markdown += f"## {author} {stars}\n\n"
             markdown += f"**Rating:** {rating}/5  \n"
             if date_str:
                 markdown += f"**Date:** {date_str}  \n"

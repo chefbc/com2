@@ -357,6 +357,270 @@
     </div>
   </section>
   {% endif %}
+
+  <!-- Reviews Scroller Section -->
+  <section class="mdx-reviews">
+    <div class="mdx-reviews__container">
+      <h2 class="mdx-reviews__title">What Our Customers Say</h2>
+      <div class="mdx-reviews__scroller" id="reviews-scroller">
+        <div class="mdx-reviews__track" id="reviews-track">
+          <!-- Reviews will be loaded here by JavaScript -->
+        </div>
+      </div>
+      <div class="mdx-reviews__controls">
+        <button class="mdx-reviews__button mdx-reviews__button--prev" id="reviews-prev" aria-label="Previous review">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        <button class="mdx-reviews__button mdx-reviews__button--next" id="reviews-next" aria-label="Next review">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Load and display reviews
+    (function() {
+      const reviewsPath = '{{ "reviews.json" | url }}';
+      const track = document.getElementById('reviews-track');
+      const prevBtn = document.getElementById('reviews-prev');
+      const nextBtn = document.getElementById('reviews-next');
+      const scroller = document.getElementById('reviews-scroller');
+      
+      let reviews = [];
+      let currentIndex = 0;
+
+      // Load reviews from JSON
+      fetch(reviewsPath)
+        .then(response => response.json())
+        .then(data => {
+          reviews = data;
+          renderReviews();
+        })
+        .catch(error => {
+          console.error('Error loading reviews:', error);
+          track.innerHTML = '<p class="mdx-reviews__error">Unable to load reviews at this time.</p>';
+        });
+
+      function renderReviews() {
+        if (!track || reviews.length === 0) return;
+        
+        track.innerHTML = reviews.map((review, index) => {
+          const stars = '⭐'.repeat(review.rating || 5);
+          const text = review.text.replace(/\n\n/g, '</p><p>');
+          return `
+            <div class="mdx-reviews__card" data-index="${index}">
+              <div class="mdx-reviews__header">
+                <div class="mdx-reviews__author">${escapeHtml(review.author)}</div>
+                <div class="mdx-reviews__rating">${stars}</div>
+              </div>
+              <div class="mdx-reviews__date">${escapeHtml(review.relative_time || review.time || '')}</div>
+              <div class="mdx-reviews__text">
+                <p>${escapeHtml(text)}</p>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      }
+
+      function scrollToReview(index) {
+        if (!track || reviews.length === 0) return;
+        currentIndex = Math.max(0, Math.min(index, reviews.length - 1));
+        const card = track.querySelector(`[data-index="${currentIndex}"]`);
+        if (card) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+
+      function nextReview() {
+        scrollToReview((currentIndex + 1) % reviews.length);
+      }
+
+      function prevReview() {
+        scrollToReview((currentIndex - 1 + reviews.length) % reviews.length);
+      }
+
+      // Event listeners
+      if (nextBtn) nextBtn.addEventListener('click', nextReview);
+      if (prevBtn) prevBtn.addEventListener('click', prevReview);
+    })();
+  </script>
+
+  <style>
+    .mdx-reviews {
+      padding: 3rem 0;
+      background-color: var(--md-default-bg-color);
+    }
+
+    .mdx-reviews__container {
+      max-width: 100%;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 1.2rem;
+      position: relative;
+    }
+
+    @media screen and (min-width: 76.25em) {
+      .mdx-reviews__container {
+        padding: 0 2.4rem;
+      }
+    }
+
+    .mdx-reviews__title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--md-default-fg-color);
+    }
+
+    .mdx-reviews__scroller {
+      position: relative;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+      padding: 1rem 0;
+      margin: 0 -1.2rem;
+    }
+
+    .mdx-reviews__scroller::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+
+    @media screen and (min-width: 76.25em) {
+      .mdx-reviews__scroller {
+        margin: 0 -2.4rem;
+      }
+    }
+
+    .mdx-reviews__track {
+      display: flex;
+      gap: 1.5rem;
+      padding: 0 1.2rem;
+      align-items: stretch;
+    }
+
+    @media screen and (min-width: 76.25em) {
+      .mdx-reviews__track {
+        padding: 0 2.4rem;
+      }
+    }
+
+    .mdx-reviews__card {
+      flex: 0 0 350px;
+      background-color: var(--md-default-bg-color);
+      border: 1px solid var(--md-default-fg-color--lightest);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      box-shadow: var(--md-shadow-z1);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .mdx-reviews__card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--md-shadow-z2);
+    }
+
+    @media screen and (max-width: 44.984375em) {
+      .mdx-reviews__card {
+        flex: 0 0 280px;
+      }
+    }
+
+    .mdx-reviews__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .mdx-reviews__author {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--md-default-fg-color);
+    }
+
+    .mdx-reviews__rating {
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .mdx-reviews__date {
+      font-size: 0.875rem;
+      color: var(--md-default-fg-color--lighter);
+      margin-bottom: 1rem;
+    }
+
+    .mdx-reviews__text {
+      flex: 1;
+      color: var(--md-default-fg-color);
+      line-height: 1.6;
+    }
+
+    .mdx-reviews__text p {
+      margin: 0 0 0.75rem 0;
+    }
+
+    .mdx-reviews__text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .mdx-reviews__controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .mdx-reviews__button {
+      background-color: var(--md-primary-fg-color);
+      color: var(--md-primary-bg-color);
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: var(--md-shadow-z1);
+    }
+
+    .mdx-reviews__button:hover {
+      background-color: var(--md-accent-fg-color);
+      transform: scale(1.1);
+    }
+
+    .mdx-reviews__button:active {
+      transform: scale(0.95);
+    }
+
+    .mdx-reviews__button svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .mdx-reviews__error {
+      text-align: center;
+      color: var(--md-default-fg-color--lighter);
+      padding: 2rem;
+    }
+  </style>
 {% endblock %}
 
 <!-- Content -->
