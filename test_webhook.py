@@ -16,8 +16,11 @@ from pathlib import Path
 from typing import Optional
 
 # Webhook URL
-WEBHOOK_URL = "https://n8n.chefbc.com/webhook/webhook-form"
-#WEBHOOK_URL = "https://n8n.chefbc.com/webhook-test/webhook-form"
+#WEBHOOK_URL = "https://n8n.chefbc.com/webhook/webhook-form"
+WEBHOOK_URL = "https://n8n.chefbc.com/webhook-test/webhook-form"
+
+# Email subject (matches mkdocs.yml extra.contact_form.subject; hidden on form, sent with payload)
+DEFAULT_SUBJECT = "ChefBC.com – New Contact Form Submission"
 
 
 def create_sample_data():
@@ -43,7 +46,9 @@ def create_sample_data():
         
         # Additional Information
         "additionalInfo": "This is a test submission from the webhook test script.",
-        "howDidYouHear": "search-engine"
+        "howDidYouHear": "search-engine",
+        # Honeypot (must be empty for submission to be accepted)
+        "website": ""
     }
 
 
@@ -78,8 +83,12 @@ def test_webhook_with_json_only(include_files: bool = False):
         if isinstance(files.get("vehiclePhoto_0"), file):
             files["vehiclePhoto_0"].close()
     else:
-        # Send as JSON wrapped in formData (matches contact form payload)
-        payload = {"formData": data}
+        # Send as JSON: formData + subject + submitterIp (matches contact form payload)
+        payload = {
+            "formData": data,
+            "subject": DEFAULT_SUBJECT,
+            "submitterIp": "107.136.144.70"
+        }
         print("\nSending JSON data...")
         print(f"URL: {WEBHOOK_URL}")
         print(f"\nData being sent:")
@@ -122,9 +131,11 @@ def test_webhook_with_formdata():
     
     data = create_sample_data()
     
-    # Create FormData
+    # Create FormData (formData + subject + submitterIp, matches contact form)
     form_data = {
-        "formData": json.dumps(data)
+        "formData": json.dumps(data),
+        "subject": DEFAULT_SUBJECT,
+        "submitterIp": "107.136.144.70"
     }
     
     files = {}

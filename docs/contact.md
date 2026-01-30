@@ -10,6 +10,14 @@ hide:
 Please fill out the form below to get in touch with us. We'll respond as soon as possible.
 
 <form id="contact-form" class="contact-form" onsubmit="handleSubmit(event)">
+  <!-- Subject from mkdocs.yml extra.contact_form.subject (injected at build, hidden from user) -->
+  <input type="hidden" id="contact-email-subject" name="_subject" value="CONTACT_FORM_SUBJECT_PLACEHOLDER">
+  
+  <!-- Honeypot: hidden from users; bots that fill it are rejected (leave empty) -->
+  <div class="hp" aria-hidden="true">
+    <label for="website">Website</label>
+    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+  </div>
   
   <!-- Personal Information Section -->
   <div class="form-section">
@@ -326,6 +334,17 @@ Please fill out the form below to get in touch with us. We'll respond as soon as
   font-size: 0.875rem;
   color: var(--md-default-fg-color--light, #666);
   text-align: center;
+}
+
+/* Honeypot: hidden from users, not announced to screen readers */
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Vehicle Condition radio options - card style */
@@ -664,41 +683,57 @@ async function handleSubmit(event) {
     // Collect form data
     const formData = new FormData(event.target);
     
+    // Honeypot: if filled, treat as bot – show success but don't send
+    const honeypot = (formData.get('website') || '').toString().trim();
+    if (honeypot) {
+      console.warn('Honeypot filled; submission ignored.');
+      alert('Thank you for your submission! We will contact you soon.');
+      event.target.reset();
+      formSubmitting = false;
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+      return;
+    }
+    
     // Collect checkbox values as arrays
     const services = Array.from(document.querySelectorAll('input[name="services"]:checked')).map(cb => cb.value);
     
-    // Build the data object
+    // Build the data object (include honeypot so n8n can reject server-side too)
     const formDataObj = {
-      // Personal Information
       firstName: formData.get('firstName'),
       lastName: formData.get('lastName'),
       email: formData.get('email'),
       phone: formData.get('phone'),
-      
-      // Vehicle Information
       vehicleYear: formData.get('vehicleYear'),
       vehicleMake: formData.get('vehicleMake'),
       vehicleModel: formData.get('vehicleModel'),
-      
-      // Vehicle Condition (good, moderate, bad)
       condition: formData.get('condition'),
-      
-      // Services
       services: services,
       preferredDate: formData.get('preferredDate'),
-      
-      // Additional Information
       additionalInfo: formData.get('additionalInfo'),
-      howDidYouHear: formData.get('howDidYouHear')
+      howDidYouHear: formData.get('howDidYouHear'),
+      website: formData.get('website')
     };
     
-    // Log the JSON data to console for debugging
+    // Capture submitter IP (for email body)
+    let submitterIp = null;
+    try {
+      const ipRes = await fetch('https://api.ipify.org?format=json', { method: 'GET' });
+      if (ipRes.ok) {
+        const ipJson = await ipRes.json();
+        submitterIp = ipJson.ip || null;
+      }
+    } catch (e) {
+      console.warn('Could not fetch IP:', e);
+    }
+    
     console.log('=== Form Data JSON ===');
     console.log(JSON.stringify(formDataObj, null, 2));
     console.log('=====================');
     
-    // Wrap in formData so n8n workflow can reliably extract it
-    const payload = { formData: formDataObj };
+    const subjectEl = document.getElementById('contact-email-subject');
+    const emailSubject = (subjectEl && subjectEl.value) ? subjectEl.value : 'Contact Form Submission';
+    const payload = { formData: formDataObj, subject: emailSubject, submitterIp: submitterIp };
     const jsonString = JSON.stringify(payload);
     
     // Log what's being sent
