@@ -628,5 +628,7 @@
 <!-- Content -->
 {% block content %}{% endblock %}
 
-<!-- Application footer -->
-{% block footer %}{% endblock %}
+<!-- Application footer (business details, copyright, social) -->
+{% block footer %}
+{% include "partials/footer.html" %}
+{% endblock %}

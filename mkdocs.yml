@@ -135,6 +135,18 @@ hooks:
 
 # Additional configuration
 extra:
+  # Footer prev/next nav: set to false to hide the "Previous / Next" links (md-footer__inner)
+  footer_nav_visible: false
+  # Business / contact details (for contact page, footer, etc.)
+  business:
+    email: specklessas@gmail.com
+    phone: "262-218-2794"
+    address: "S34W29939 Little John Dr. # 4, Waukesha, WI 53189"
+    hours: "Mon - Fri: 9:00 AM - 5:00 PM"
+    # Google Maps: must be the EMBED URL (iframe src), not a share link.
+    # Get it: Google Maps → your place → Share → "Embed a map" tab → copy the iframe src (starts with https://www.google.com/maps/embed?pb=...).
+    # Share links (maps.app.goo.gl/...) do not work in iframes; until you set the embed URL, a "View on Google Maps" link is shown.
+    google_map_embed_id: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2918.9050766385694!2d-88.34737228803604!3d42.980273171021594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8804ff9da3be63e5%3A0x5cfa18e05992e8b7!2sSpeckless%20Auto%20Spa!5e0!3m2!1sen!2sus!4v1769878437091!5m2!1sen!2sus"
   # Contact form: subject is hidden from user but sent with submission (for email subject line)
   contact_form:
     subject: "ChefBC.com – New Contact Form Submission"
