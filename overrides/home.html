@@ -378,6 +378,31 @@
   </section>
   {% endif %}
 
+  <!-- Gallery Scroller Section: Our Work – top row scrolls left, bottom row scrolls right -->
+  <section class="gallery-scroller-section">
+    <h2 class="gallery-scroller-title">
+      <a href="{{ gallery_url | url }}" class="gallery-scroller-link">Our Work</a>
+    </h2>
+    {% set row1 = gallery_scroller_row1 | default([]) %}
+    {% set row2 = gallery_scroller_row2 | default([]) %}
+    {% if row1 %}
+    <div class="gallery-scroller-row gallery-scroller-row--left" aria-hidden="true">
+      <div class="gallery-scroller-track">
+        {% for img in row1 %}<a href="{{ gallery_url | url }}" class="gallery-scroller-item"><img src="{{ img.url }}" alt="{{ img.name }}" loading="lazy"></a>{% endfor %}
+        {% for img in row1 %}<a href="{{ gallery_url | url }}" class="gallery-scroller-item"><img src="{{ img.url }}" alt="{{ img.name }}" loading="lazy"></a>{% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    {% if row2 %}
+    <div class="gallery-scroller-row gallery-scroller-row--right" aria-hidden="true">
+      <div class="gallery-scroller-track">
+        {% for img in row2 %}<a href="{{ gallery_url | url }}" class="gallery-scroller-item"><img src="{{ img.url }}" alt="{{ img.name }}" loading="lazy"></a>{% endfor %}
+        {% for img in row2 %}<a href="{{ gallery_url | url }}" class="gallery-scroller-item"><img src="{{ img.url }}" alt="{{ img.name }}" loading="lazy"></a>{% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  </section>
+
   <!-- Reviews Scroller Section -->
   {% set reviews = reviews | default([]) %}
   {% if reviews | length > 0 %}

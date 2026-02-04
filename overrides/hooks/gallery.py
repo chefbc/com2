@@ -62,6 +62,66 @@ def get_gallery_images(docs_dir: str, image_folder: str = "downloads") -> Dict[s
     return albums
 
 
+def on_page_context(context, page, config, nav):
+    """
+    For the home page, provide gallery images for the gallery_scroller section
+    (two rows: row1 scrolls left, row2 scrolls right).
+    Limits total images and tries to represent all galleries (round-robin).
+    """
+    if not page or not getattr(page, "file", None):
+        return context
+    if getattr(page.file, "src_path", None) != "index.md":
+        return context
+
+    context["gallery_url"] = "gallery/"
+    docs_dir = config.docs_dir
+    albums = get_gallery_images(docs_dir, "downloads")
+
+    # Max total images in scroller (split between two rows)
+    max_scroller_images = 16
+
+    # Build list by taking from each gallery in turn so all galleries are represented
+    flat = []
+    sorted_albums = sorted(albums.items())
+    if not sorted_albums:
+        context["gallery_scroller_row1"] = []
+        context["gallery_scroller_row2"] = []
+        return context
+
+    # Round-robin: take one image from each album in turn until we have max_scroller_images.
+    # Skip any image we've already added so the scroller has no duplicates.
+    seen_paths = set()
+    indices = {name: 0 for name, _ in sorted_albums}
+    while len(flat) < max_scroller_images:
+        round_added = 0
+        for album_name, images in sorted_albums:
+            if len(flat) >= max_scroller_images:
+                break
+            i = indices[album_name]
+            while i < len(images):
+                img = images[i]
+                path = img["path"]
+                if path in seen_paths:
+                    i += 1
+                    indices[album_name] = i
+                    continue
+                seen_paths.add(path)
+                indices[album_name] = i + 1
+                url = "/" + path if not path.startswith("/") else path
+                flat.append({"path": path, "name": img["name"], "url": url})
+                round_added += 1
+                break
+            else:
+                indices[album_name] = len(images)
+        if round_added == 0:
+            break
+
+    mid = (len(flat) + 1) // 2
+    context["gallery_scroller_row1"] = flat[:mid]
+    context["gallery_scroller_row2"] = flat[mid:]
+    return context
+
+
 def on_page_markdown(markdown: str, *, page: Page, config: MkDocsConfig, files):
     """
     Replace gallery shortcodes with placeholders that will be replaced in on_page_content.

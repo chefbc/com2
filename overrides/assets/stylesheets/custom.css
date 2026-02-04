@@ -1499,3 +1499,79 @@ pre,
     width: auto;
     height: auto;
 }
+
+/* Gallery Scroller: Our Work – top row scrolls left, bottom row scrolls right */
+.gallery-scroller-section {
+    padding: 3rem 0;
+    background: #fff;
+    overflow: hidden;
+}
+.gallery-scroller-title {
+    text-align: center;
+    margin: 0 0 2rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #666;
+}
+.gallery-scroller-link {
+    color: #666;
+    text-decoration: none;
+}
+.gallery-scroller-link:hover {
+    color: #333;
+    text-decoration: underline;
+}
+.gallery-scroller-row {
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+.gallery-scroller-row:last-child {
+    margin-bottom: 0;
+}
+.gallery-scroller-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+/* Fixed duration so speed doesn't depend on number of images; slow scroll */
+.gallery-scroller-row--left .gallery-scroller-track {
+    animation-name: gallery-scroll-left;
+    animation-duration: 80s;
+}
+.gallery-scroller-row--right .gallery-scroller-track {
+    animation-name: gallery-scroll-right;
+    animation-duration: 80s;
+}
+/* Pause scroller when user hovers over the row */
+.gallery-scroller-row:hover .gallery-scroller-track {
+    animation-play-state: paused;
+}
+@keyframes gallery-scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+@keyframes gallery-scroll-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+.gallery-scroller-item {
+    flex-shrink: 0;
+    display: block;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.2s;
+}
+.gallery-scroller-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+.gallery-scroller-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
