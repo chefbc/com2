@@ -358,6 +358,26 @@
   </section>
   {% endif %}
 
+  <!-- Notification section (3 columns, data from docs/notification.md, optional video background) -->
+  {% if notification_content %}
+  <section class="mdx-notification-section">
+    {% if notification_video %}
+    <div class="notification-page-with-video">
+      <video class="notification-video-bg" autoplay muted loop playsinline aria-hidden="true">
+        <source src="{{ notification_video | url }}" type="video/mp4">
+      </video>
+      <div class="notification-video-overlay">
+        {{ notification_content | safe }}
+      </div>
+    </div>
+    {% else %}
+    <div class="notification-video-overlay mdx-notification-section__content">
+      {{ notification_content | safe }}
+    </div>
+    {% endif %}
+  </section>
+  {% endif %}
+
   <!-- Reviews Scroller Section -->
   {% set reviews = reviews | default([]) %}
   {% if reviews | length > 0 %}

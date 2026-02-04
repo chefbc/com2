@@ -126,8 +126,10 @@ watch:
 
 # Hooks
 hooks:
+  - overrides/hooks/front_matter.py
   - overrides/hooks/blog_posts.py
   - overrides/hooks/reviews.py
+  - overrides/hooks/notification_section.py
   - overrides/hooks/gallery.py
   - overrides/hooks/contact_form.py
 #   - material/overrides/hooks/shortcodes.py
@@ -136,7 +138,7 @@ hooks:
 # Additional configuration
 extra:
   # Footer prev/next nav: set to false to hide the "Previous / Next" links (md-footer__inner)
-  footer_nav_visible: false
+  footer_nav_visible: true
   # Business / contact details (for contact page, footer, etc.)
   business:
     email: specklessas@gmail.com
@@ -179,6 +181,9 @@ extra:
   # Use 'text' for plain text, or 'html' for rich HTML content
   announcement:
     enabled: true
+    # Optional: bar colors (any CSS color: hex, rgb(), name, etc.)
+    background: "#1976d2"
+    color: "#fff"
     # Simple text announcement
     # text: "Welcome to ChefBC.com! Check out our latest updates."
     # Or use HTML for rich content with links and icons
@@ -338,28 +343,36 @@ nav:
       - insiders/community-experts-program/index.md
   - Blog:
     - blog/index.md
-  - Web:
-    - web/a-full-style-test.md
-    - web/crc.md
-    - web/gcp-pd.md
-    - web/hello.md
-    - web/iap.md
-    - web/mysql-memory.md
-    - web/narrative.md
-    - web/notes.md
-    - web/os-cheat.md
-    - web/portforward.md
-    - web/python-env.md
-    - web/ssh-snippet.md
-    - web/welcome.md
-    - web/zachman.md
-    - web/git.md
-    - web/gitlab.md
-    - web/docker.md
+  # - Web:
+  #   - web/a-full-style-test.md
+  #   - web/crc.md
+  #   - web/gcp-pd.md
+  #   - web/hello.md
+  #   - web/iap.md
+  #   - web/mysql-memory.md
+  #   - web/narrative.md
+  #   - web/notes.md
+  #   - web/os-cheat.md
+  #   - web/portforward.md
+  #   - web/python-env.md
+  #   - web/ssh-snippet.md
+  #   - web/welcome.md
+  #   - web/zachman.md
+  #   - web/git.md
+  #   - web/gitlab.md
+  #   - web/docker.md
   - Reviews:
     - reviews/reviews.md
   - Gallery: gallery.md
+  - Notification: notification.md
   - Contact: contact.md
+  - Services:
+    # - services/overview.md
+    - Ceramic coating: services/ceramic-coating/ceramic.md
+    - Detailing packages:
+        - Exterior: services/detailing-packages/exterior.md
+        - Interior: services/detailing-packages/interior.md
+        - Engine bay: services/detailing-packages/engine.md
 
 
 

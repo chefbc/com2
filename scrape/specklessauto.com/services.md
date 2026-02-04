@@ -11,10 +11,10 @@ Search
  eof .modal 
  wrappers for visual page editor and boxed version of template 
 template sections 
-[![image](assets/Horizontal-Color-Speckless-Auto-Spa-Logo-2024.png)](https://specklessauto.com/) eof .header_left_logo eof col-* 
+[![image](assets/Horizontal-Color-Speckless-Auto-Spa-Logo-2024_c77718.png)](https://specklessauto.com/) eof .header_left_logo eof col-* 
 	eof .col-sm-*	eof .row 	eof .container eof .page_header## Services
 **PLEASE SPECIFY IF YOU WOULD LIKE INTERIOR, EXTERIOR OR BOTH**
-[![SILVER PACKAGE](assets/Silver_S.png)](https://specklessauto.com/#schedule)
+[![SILVER PACKAGE](assets/Silver_S_55634a.png)](https://specklessauto.com/#schedule)
 
 ### [SILVER PACKAGE](https://specklessauto.com/#schedule)
 
@@ -97,7 +97,7 @@ This Package Includes:
 -Door Jams Cleaned
 
 [Select Interior, Exterior or Both](https://specklessauto.com/#schedule) eof teaser 
-[![GOLD PACKAGE](assets/Gold_S.png)](https://specklessauto.com/#schedule)
+[![GOLD PACKAGE](assets/Gold_S_1a89c4.png)](https://specklessauto.com/#schedule)
 
 ### [GOLD PACKAGE](https://specklessauto.com/#schedule)
 
@@ -196,7 +196,7 @@ This Package Includes:
 -Door Jams Cleaned
 
 [Select Interior, Exterior or Both](https://specklessauto.com/#schedule) eof teaser 
-[![PLATINUM PACKAGE (most popular)](assets/Platinum_S.png)](https://specklessauto.com/#schedule)
+[![PLATINUM PACKAGE (most popular)](assets/Platinum_S_c2ff0d.png)](https://specklessauto.com/#schedule)
 
 ### [PLATINUM PACKAGE (most popular)](https://specklessauto.com/#schedule)
 

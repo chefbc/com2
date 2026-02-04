@@ -35,12 +35,24 @@
     rel="stylesheet"
     href="{{ 'assets/stylesheets/custom.css' | url }}"
   />
+
+  {% if config.extra.announcement and config.extra.announcement.enabled | default(true) %}
+    {% if config.extra.announcement.background or config.extra.announcement.color %}
+  <style>
+    .md-banner {
+      {% if config.extra.announcement.background %}background-color: {{ config.extra.announcement.background }};{% endif %}
+      {% if config.extra.announcement.color %}color: {{ config.extra.announcement.color }};{% endif %}
+    }
+  </style>
+    {% endif %}
+  {% endif %}
 {% endblock %}
 
 <!-- Announcement bar -->
 {% block announce %}
   {% if config.extra.announcement %}
     {% if config.extra.announcement.enabled | default(true) %}
+      <div style="text-align: center">
       {% if config.extra.announcement.html %}
         {{ config.extra.announcement.html | safe }}
       {% elif config.extra.announcement.text %}
@@ -48,7 +60,24 @@
       {% elif config.extra.announcement is string %}
         {{ config.extra.announcement }}
       {% endif %}
+      </div>
     {% endif %}
+  {% endif %}
+{% endblock %}
+
+<!-- Main content: optional video background when page.meta.video is set -->
+{% block content %}
+  {% if page and page.meta and page.meta.video %}
+  <div class="notification-page-with-video">
+    <video class="notification-video-bg" autoplay muted loop playsinline aria-hidden="true">
+      <source src="{{ page.meta.video | url }}" type="video/mp4">
+    </video>
+    <div class="notification-video-overlay">
+      {{ super() }}
+    </div>
+  </div>
+  {% else %}
+  {{ super() }}
   {% endif %}
 {% endblock %}
 

@@ -279,9 +279,12 @@ pre,
     max-height: none;
 }
 
-/* Footer business details (extra.business): 1/3 contact left, 2/3 map right */
+/* Footer: Contact section + Map section, with margins and colors */
 .md-footer-business {
     background-color: var(--md-default-fg-color--lightest);
+    margin: 1rem 1.5rem;
+    border-radius: 0.2rem;
+    overflow: hidden;
 }
 [data-md-color-scheme="slate"] .md-footer-business {
     background-color: var(--md-default-fg-color--lightest);
@@ -292,10 +295,22 @@ pre,
     gap: 0;
     min-height: 200px;
 }
+.md-footer-business__section-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.95;
+}
 .md-footer-business__contact {
     flex: 0 0 33.333%;
     min-width: 200px;
-    padding: 0.6rem 0.8rem;
+    padding: 1rem 1.25rem;
+}
+.md-footer-business__contact .md-footer-business__section-title {
+    margin-bottom: 0.75rem;
 }
 .md-footer-business__inner {
     display: flex;
@@ -306,6 +321,28 @@ pre,
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
+}
+.md-footer-business__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+.md-footer-business__icon {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--md-accent-fg-color);
+}
+.md-footer-business__icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    fill: currentColor;
+}
+.md-footer-business__item > span:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
 }
 .md-footer-business__label {
     font-size: 0.7rem;
@@ -320,28 +357,30 @@ pre,
 .md-footer-business__link:hover {
     text-decoration: underline;
 }
+.md-footer-business__map-link {
+    display: inline-block;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+}
+.md-footer-business__map-link:hover {
+    text-decoration: underline;
+}
 .md-footer-business__map {
     flex: 1 1 66.666%;
     min-width: 200px;
     min-height: 200px;
-    padding: 0;
+    padding: 1rem 1.25rem 1rem 0;
     overflow: hidden;
+}
+.md-footer-business__map .md-footer-business__section-title {
+    margin-bottom: 0.5rem;
 }
 .md-footer-business__map iframe {
     width: 100%;
     height: 100%;
     min-height: 200px;
-    border-radius: 0;
+    border-radius: 0.2rem;
     display: block;
-}
-.md-footer-business__map-link {
-    display: inline-block;
-    padding: 0.6rem 0.8rem;
-    font-size: 0.8rem;
-    color: var(--md-primary-fg-color);
-}
-.md-footer-business__map-link:hover {
-    text-decoration: underline;
 }
 @media (max-width: 600px) {
     .md-footer-business__row {
@@ -353,7 +392,14 @@ pre,
     .md-footer-business__map {
         flex: 1 1 auto;
         min-height: 200px;
+        padding: 1rem 1.25rem;
     }
+}
+
+/* Footer meta (copyright/social) – align margins with business block */
+.md-footer .md-footer-meta {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
 }
 
 
@@ -1236,4 +1282,220 @@ pre,
 .mdx-featured__posts-grid .md-post__tag:hover {
     background-color: #29b6f6;
     color: #ffffff;
+}
+
+/* Notification section: video background (video behind content) */
+.mdx-notification-section {
+    position: relative;
+}
+.mdx-notification-section .notification-page-with-video,
+.notification-page-with-video {
+    position: relative;
+    min-height: 60vh;
+    overflow: hidden;
+}
+/* No dark overlay when video is present – video shows at full brightness */
+.mdx-notification-section .notification-page-with-video::before,
+.notification-page-with-video::before {
+    display: none;
+}
+.mdx-notification-section .notification-video-bg,
+.notification-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+.mdx-notification-section .notification-video-overlay,
+.notification-video-overlay {
+    position: relative;
+    z-index: 2;
+    min-height: 60vh;
+}
+/* When video is present: minimal content background so video is clearly visible */
+.mdx-notification-section .notification-page-with-video .bg-custom-darkGray,
+.mdx-notification-section .notification-page-with-video .section.bg-custom-darkGray,
+.notification-page-with-video .bg-custom-darkGray,
+.notification-page-with-video .section.bg-custom-darkGray {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+/* Text readability over video: subtle shadow when video is present */
+.mdx-notification-section .notification-page-with-video .notification-column p,
+.mdx-notification-section .notification-page-with-video .notification-heading-row h1,
+.notification-page-with-video .notification-column p,
+.notification-page-with-video .notification-heading-row h1 {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.5);
+}
+.mdx-notification-section .notification-page-with-video .notification-heading-row h1,
+.notification-page-with-video .notification-heading-row h1 {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Notification section: 3-column layout (home page + notification page) */
+.mdx-notification-section .notification-three-columns,
+.notification-three-columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+@media (min-width: 44.9375em) {
+    .mdx-notification-section .notification-three-columns,
+    .notification-three-columns {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+        align-items: center;
+    }
+}
+.mdx-notification-section .notification-column,
+.notification-column {
+    text-align: center;
+    padding: 0 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+}
+.mdx-notification-section .notification-column p,
+.notification-column p {
+    max-width: 20em;
+    margin: 1rem auto;
+    line-height: 1.5;
+}
+/* Left column: Dr. Beasley's badge – moderate size */
+.mdx-notification-section .notification-column:nth-child(1) img,
+.notification-three-columns .notification-column:nth-child(1) img {
+    max-height: 140px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Center column: authorized photo – constrained so row is balanced */
+.mdx-notification-section .notification-column:nth-child(2) img,
+.notification-three-columns .notification-column:nth-child(2) img {
+    max-height: 280px;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Right column: IDA logo – taller stacked badge */
+.mdx-notification-section .notification-column:nth-child(3) img,
+.notification-three-columns .notification-column:nth-child(3) img {
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.mdx-notification-section .notification-column img,
+.notification-column img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.mdx-notification-section .notification-column h1,
+.mdx-notification-section .notification-column h2,
+.mdx-notification-section .notification-column h3,
+.notification-column h1,
+.notification-column h2,
+.notification-column h3 {
+    margin-top: 0.5rem;
+}
+/* Shop Now button – larger and more prominent */
+.mdx-notification-section .notification-column .md-button--primary,
+.notification-column .md-button--primary {
+    margin-top: 1rem;
+    padding: 0.6em 1.4em;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.3rem;
+}
+
+/* Notification: heading below columns, spans full width */
+.mdx-notification-section .notification-heading-row,
+.notification-heading-row {
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 0;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+.mdx-notification-section .notification-heading-row h1,
+.mdx-notification-section .notification-heading-row h2,
+.notification-heading-row h1,
+.notification-heading-row h2 {
+    margin: 0;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Notification section: full-width dark gray block (home + notification page) */
+.mdx-notification-section .section.bg-custom-darkGray,
+.mdx-notification-section .section.section-padding {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+.mdx-notification-section .section.section-padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+@media (min-width: 44.9375em) {
+    .mdx-notification-section .section.section-padding {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+.mdx-notification-section .bg-custom-darkGray,
+.mdx-notification-section .section.bg-custom-darkGray {
+    background-color: #2d2d2d;
+    color: rgba(255, 255, 255, 0.9);
+}
+.mdx-notification-section .bg-custom-darkGray h1,
+.mdx-notification-section .bg-custom-darkGray h2,
+.mdx-notification-section .bg-custom-darkGray h3,
+.mdx-notification-section .bg-custom-darkGray p {
+    color: rgba(255, 255, 255, 0.9);
+}
+.mdx-notification-section .bg-custom-darkGray h1,
+.mdx-notification-section .bg-custom-darkGray h2,
+.mdx-notification-section .bg-custom-darkGray h3 {
+    color: #fff;
+    font-weight: 600;
+}
+.mdx-notification-section .bg-custom-darkGray a {
+    color: #90caf9;
+}
+.mdx-notification-section .bg-custom-darkGray a:hover {
+    color: #bbdefb;
+}
+.mdx-notification-section .bg-custom-darkGray .md-button--primary {
+    background-color: #1976d2;
+    color: #fff;
+}
+.mdx-notification-section .bg-custom-darkGray .md-button--primary:hover {
+    background-color: #1565c0;
+    color: #fff;
+}
+.mdx-notification-section .bg-custom-darkGray img {
+    width: auto;
+    height: auto;
 }

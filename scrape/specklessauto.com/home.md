@@ -11,30 +11,30 @@ Search
  eof .modal 
  wrappers for visual page editor and boxed version of template 
 template sections 
-[![image](assets/Horizontal-Color-Speckless-Auto-Spa-Logo-2024.png)](https://specklessauto.com/) eof .header_left_logo eof col-* 
+[![image](assets/Horizontal-Color-Speckless-Auto-Spa-Logo-2024_c77718.png)](https://specklessauto.com/) eof .header_left_logo eof col-* 
 	eof .col-sm-*	eof .row 	eof .container eof .page_header
 START Top Slider REVOLUTION SLIDER 6.4.11 
 
-![image](assets/Speckless_bg1_overlay.jpg)
+![image](assets/Speckless_bg1_overlay_05f949.jpg)
 
 [SEE PACKAGES](https://specklessauto.com/#packages)
 When Clean isn't enough
 Go with Speckless
-![image](assets/ferrari_bg.jpg)
+![image](assets/ferrari_bg_779e82.jpg)
 
 Get a showroom shine
 every time.
 [LEARN MORE](https://specklessauto.com/#packages)
-![image](assets/Benz_bg.jpg)
+![image](assets/Benz_bg_f31341.jpg)
 
 Call Us Today
 262-218-2794
 [BOOK SERVICE](https://specklessauto.com/#schedule)
- END REVOLUTION SLIDER![image](assets/Dr_Beasleys_AD_web_badge.png)
+ END REVOLUTION SLIDER![image](assets/Dr_Beasleys_AD_web_badge_18d621.png)
 As an authorized detailer, Speckless Auto Spa gives you the first opportunity to get Dr. Beasley's products shipped directly to you.
 [Shop Now](https://www.drbeasleys.com/?affiliate=SpecklessAuto)
-![image](assets/Authorized.jpg)
-![image](assets/IDA-Logo-MB-CD-SV-1-232x300.png)
+![image](assets/Authorized_e1c7ef.jpg)
+![image](assets/IDA-Logo-MB-CD-SV-1-232x300_b96a7a.png)
 # Speckless Auto Spa- Your Vehicle Preservation & Restoration Specialists.
 
 ### FEATURED **PACKAGES**
@@ -42,7 +42,7 @@ As an authorized detailer, Speckless Auto Spa gives you the first opportunity to
 Please specify if you would like interior, exterior or both
 ---
 
-[![SILVER PACKAGE - Express](assets/Silver_S.png)](https://specklessauto.com/#schedule)
+[![SILVER PACKAGE - Express](assets/Silver_S_55634a.png)](https://specklessauto.com/#schedule)
 
 ### [SILVER PACKAGE - Express](https://specklessauto.com/#schedule)
 
@@ -122,7 +122,7 @@ This Package Includes:
 -Door Jams Cleaned
 
 [Select Interior, Exterior or Both](https://specklessauto.com/#schedule) eof teaser 
-[![GOLD PACKAGE - Maintenance](assets/Gold_S.png)](https://specklessauto.com/#schedule)
+[![GOLD PACKAGE - Maintenance](assets/Gold_S_1a89c4.png)](https://specklessauto.com/#schedule)
 
 ### [GOLD PACKAGE - Maintenance](https://specklessauto.com/#schedule)
 
@@ -218,7 +218,7 @@ This Package Includes:
 -Door Jams Cleaned
 
 [Select Interior, Exterior or Both](https://specklessauto.com/#schedule) eof teaser 
-[![PLATINUM PACKAGE - Enhancement](assets/Platinum_S.png)](https://specklessauto.com/#schedule)
+[![PLATINUM PACKAGE - Enhancement](assets/Platinum_S_c2ff0d.png)](https://specklessauto.com/#schedule)
 
 ### [PLATINUM PACKAGE - Enhancement](https://specklessauto.com/#schedule)
 
@@ -327,26 +327,26 @@ Platinum Interior is for vehicles that are filthy, stains can be found along wit
 Notice: JavaScript is required for this content.
 
  That data is being printed as a workaround to page builders reordering the order of the scripts loaded
-![image](assets/FB_IMG_1627960879340.jpg)
+![image](assets/FB_IMG_1627960879340_e2c483.jpg)
 
-![image](assets/RGB-Square-Color-Speckless-Auto-Spa-Logo-2024-300x255.webp)
+![image](assets/RGB-Square-Color-Speckless-Auto-Spa-Logo-2024-300x255_5f846f.webp)
 
-![image](assets/f00e6d0cee933219f7041ae162017dac.jpg)
+![image](assets/f00e6d0cee933219f7041ae162017dac_dd7bfe.jpg)
 
-![image](assets/IMG_38651.jpg)
+![image](assets/IMG_38651_e1b177.jpg)
 
-![image](assets/ferrari_interior_1.jpg)
+![image](assets/ferrari_interior_1_3cd401.jpg)
 
-![image](assets/2f9c3eb1877072b2acefd5fdd9b4b831.jpg)
-- > ![Brad K](assets/05-3.jpg)
+![image](assets/2f9c3eb1877072b2acefd5fdd9b4b831_4c6e73.jpg)
+- > ![Brad K](assets/05-3_02f6b0.jpg)
 > 
 > I won't go anywhere else besides Speckless going forward for my car details. They went above and beyond for my 2014 Mercedes GLK, which looks like a new car now, inside and out. 							Brad K
 > Customer
-- > ![Mary M](assets/02-4.jpg)
+- > ![Mary M](assets/02-4_03688f.jpg)
 > 
 > Cale and his team are unreal.  Not only are their prices very reasonable, they picked up my car and brought it back only a few hours later looking like new!  Can't beat that. 							Mary M
 > Customer
-- > ![Jim R](assets/01-4.jpg)
+- > ![Jim R](assets/01-4_9c2fc2.jpg)
 > 
 > I have to say I was very happy with my current detailer until I worked with Speckless.  They blew the last place I used to go to out of the water and for half the price!  Looking forward to my next service in a few months. 							Jim R
 > Customer
