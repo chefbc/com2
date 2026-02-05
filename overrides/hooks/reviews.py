@@ -1,7 +1,10 @@
 """
 Hook to fetch Google reviews at build time and make them available in template context.
+Falls back to parsing static reviews from the reviews markdown file when API is not used.
 """
 import os
+import re
+from pathlib import Path
 from typing import List, Dict, Optional
 
 # Try to import Google API libraries
@@ -106,6 +109,75 @@ class GoogleReviewsFetcher:
 # Global cache to avoid fetching multiple times
 _reviews_cache = None
 
+# Pattern: ## Name ⭐⭐⭐⭐⭐ (optional stars)
+_HEADING_RE = re.compile(r"^##\s+(.+?)(?:\s+⭐+)?\s*$")
+_DATE_RE = re.compile(r"\*\*Date:\*\*\s*(.+?)(?:\s*$|\s*\n)", re.MULTILINE)
+
+
+def _parse_static_reviews_from_markdown(docs_dir: str, src_path: str) -> List[Dict]:
+    """
+    Parse the reviews markdown file into the same structure as Google reviews.
+    Expects blocks like:
+      ## Name ⭐⭐⭐⭐⭐
+      **Rating:** 5/5
+      **Date:** 2 months ago
+      <blank line>
+      Review text...
+      ---
+    """
+    path = Path(docs_dir) / src_path
+    if not path.exists():
+        return []
+    raw = path.read_text(encoding="utf-8", errors="replace")
+    # Strip front matter
+    if raw.startswith("---"):
+        end = raw.find("---", 3)
+        if end != -1:
+            raw = raw[end + 3 :].lstrip()
+    reviews = []
+    # Split by ## (review headings), skip content before first ##
+    blocks = re.split(r"\n##\s+", raw, flags=re.IGNORECASE)
+    for block in blocks:
+        block = block.strip()
+        if not block or block.startswith("# ") or "Total reviews:" in block[:50]:
+            continue
+        lines = block.split("\n")
+        if not lines:
+            continue
+        first = lines[0].strip()
+        # First line: "Name ⭐⭐⭐⭐⭐" or "Name"
+        stars = first.count("⭐")
+        name = first.replace("⭐", "").strip()
+        if not name:
+            continue
+        rating = 5 if stars >= 1 else 5
+        relative_time = ""
+        text_lines = []
+        in_body = False
+        for line in lines[1:]:
+            date_m = _DATE_RE.match(line.strip())
+            if date_m:
+                relative_time = date_m.group(1).strip()
+                in_body = True
+                continue
+            if line.strip().startswith("**Rating:**"):
+                continue
+            if line.strip() == "---":
+                break
+            if in_body or not line.strip().startswith("**"):
+                in_body = True
+                text_lines.append(line)
+        text = "\n".join(text_lines).strip()
+        reviews.append({
+            "author": name,
+            "rating": rating,
+            "text": text,
+            "time": "",
+            "relative_time": relative_time,
+        })
+    return reviews
+
+
 def on_page_context(context, page, config, nav):
     """
     Fetch Google reviews and add them to the page context.
@@ -160,6 +232,15 @@ def on_page_context(context, page, config, nav):
     # Cache and add reviews to context
     _reviews_cache = reviews
     context['reviews'] = reviews
-    print(f"[Reviews Hook] Added {len(reviews)} reviews to context\n")
-    
+
+    # For the reviews page using reviews-grid template: fallback to static markdown if no API data
+    if page and getattr(page, "file", None) and getattr(page.file, "src_path", None) == "reviews/reviews.md":
+        if not context['reviews']:
+            static = _parse_static_reviews_from_markdown(config.docs_dir, page.file.src_path)
+            if static:
+                context['reviews'] = static
+                print(f"[Reviews Hook] Using {len(static)} static reviews from markdown\n")
+
+    print(f"[Reviews Hook] Added {len(context['reviews'])} reviews to context\n")
+
     return context

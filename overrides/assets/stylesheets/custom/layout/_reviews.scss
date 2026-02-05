@@ -1,0 +1,221 @@
+////
+/// Customer reviews page – two-column layout with timeline and quote
+/// Template: reviews-grid. Left = reviewer list + curved timeline; right = blockquote
+////
+
+$reviews-accent-color: #2e7d32;
+$reviews-star-filled: #2e7d32;
+$reviews-timeline: rgba(0, 0, 0, 0.12);
+$reviews-quote-muted: #666;
+
+.reviews-customer {
+  padding: 2rem 1rem 3rem;
+  max-width: 56rem;
+  margin: 0 auto;
+
+  @media (min-width: 44.9375em) {
+    padding: 3rem 2rem 4rem;
+  }
+}
+
+.reviews-customer__accent {
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  background-color: $reviews-accent-color;
+  margin-bottom: 0.5rem;
+  border-radius: 2px;
+}
+
+.reviews-customer__title {
+  margin: 0 0 2rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--md-default-fg-color--heading, #1a1a1a);
+}
+
+.reviews-customer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+
+  @media (min-width: 44.9375em) {
+    grid-template-columns: minmax(12rem, 1fr) minmax(16rem, 1.5fr);
+    gap: 3rem;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Left column: reviewer list + curved timeline
+// ----------------------------------------------------------------------------
+
+.reviews-customer__list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.reviews-customer__timeline {
+  position: absolute;
+  left: 1.25rem;
+  top: 2rem;
+  bottom: 2rem;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    $reviews-timeline 0%,
+    $reviews-timeline 100%
+  );
+  border-radius: 1px;
+  pointer-events: none;
+
+  @media (min-width: 44.9375em) {
+    left: 1.5rem;
+    border-radius: 2px;
+    box-shadow: 0 0 0 2px transparent;
+  }
+}
+
+.reviews-customer__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0.75rem 0.75rem 0;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+  z-index: 1;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+
+  &.reviews-customer__item--active {
+    opacity: 1;
+  }
+
+  &:not(.reviews-customer__item--active) {
+    opacity: 0.85;
+  }
+}
+
+.reviews-customer__avatar {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--md-default-fg-color--light, #9e9e9e);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.reviews-customer__item--active .reviews-customer__avatar {
+  background-color: $reviews-accent-color;
+}
+
+.reviews-customer__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.reviews-customer__name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--md-default-fg-color--heading, #1a1a1a);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reviews-customer__rating-date {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  font-size: 0.8rem;
+  color: var(--md-default-fg-color--lighter, #757575);
+}
+
+.reviews-customer__stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.05rem;
+}
+
+.reviews-customer__star {
+  color: rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
+  line-height: 1;
+
+  &--filled {
+    color: $reviews-star-filled;
+  }
+}
+
+.reviews-customer__date {
+  color: var(--md-default-fg-color--lighter, #757575);
+}
+
+// ----------------------------------------------------------------------------
+// Right column: blockquote with large quotation mark
+// ----------------------------------------------------------------------------
+
+.reviews-customer__quote-wrap {
+  position: relative;
+  min-height: 8rem;
+}
+
+.reviews-customer__quote {
+  display: none;
+  margin: 0;
+  padding: 0 0 0 2.5rem;
+  position: relative;
+  border: none;
+
+  &.reviews-customer__quote--active {
+    display: block;
+  }
+}
+
+.reviews-customer__quote-mark {
+  position: absolute;
+  left: 0;
+  top: -0.15em;
+  font-size: 4rem;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.08);
+  font-family: Georgia, serif;
+  pointer-events: none;
+}
+
+.reviews-customer__quote-text {
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: $reviews-quote-muted;
+}
+
+[data-md-color-scheme="default"] .reviews-customer__quote-text {
+  color: #555;
+}
+
+[data-md-color-scheme="slate"] .reviews-customer__quote-text {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.reviews-customer__empty {
+  padding: 2rem;
+  text-align: center;
+  color: var(--md-default-fg-color--lighter, #757575);
+  font-style: italic;
+}

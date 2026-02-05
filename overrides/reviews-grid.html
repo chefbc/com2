@@ -1,0 +1,75 @@
+{# Page template used when docs set template: reviews-grid in front matter #}
+{% extends "main.html" %}
+{% block content %}
+{% set reviews_list = reviews | default([]) %}
+<section class="reviews-customer" data-reviews-section>
+  <div class="reviews-customer__accent"></div>
+  <h1 class="reviews-customer__title">Customer Reviews</h1>
+
+  <div class="reviews-customer__grid">
+    <div class="reviews-customer__list" role="list">
+      <div class="reviews-customer__timeline" aria-hidden="true"></div>
+      {% for review in reviews_list %}
+      <article
+        class="reviews-customer__item {% if loop.index0 == 0 %}reviews-customer__item--active{% endif %}"
+        role="listitem"
+        data-review-index="{{ loop.index0 }}"
+      >
+        <div class="reviews-customer__avatar" aria-hidden="true">
+          {{ review.author[0] | upper if review.author else '?' }}
+        </div>
+        <div class="reviews-customer__meta">
+          <span class="reviews-customer__name">{{ review.author | e }}</span>
+          <div class="reviews-customer__rating-date">
+            <span class="reviews-customer__stars" aria-label="Rating: {{ review.rating }} out of 5">
+              {% for i in [1, 2, 3, 4, 5] %}
+              <span class="reviews-customer__star {% if i <= (review.rating | int) %}reviews-customer__star--filled{% endif %}">★</span>
+              {% endfor %}
+            </span>
+            <span class="reviews-customer__date">{% if review.relative_time or review.time %}on {{ (review.relative_time or review.time) | e }}{% endif %}</span>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div class="reviews-customer__quote-wrap">
+      {% if reviews_list | length > 0 %}
+      {% for review in reviews_list %}
+      <blockquote
+        class="reviews-customer__quote {% if loop.index0 == 0 %}reviews-customer__quote--active{% endif %}"
+        data-quote-index="{{ loop.index0 }}"
+        cite="#"
+      >
+        <span class="reviews-customer__quote-mark" aria-hidden="true">"</span>
+        <div class="reviews-customer__quote-text">{{ review.text | e | replace('\n', '<br>') | safe }}</div>
+      </blockquote>
+      {% endfor %}
+      {% else %}
+      <div class="reviews-customer__empty">No reviews available yet.</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var section = document.querySelector('[data-reviews-section]');
+  if (!section) return;
+  var items = section.querySelectorAll('[data-review-index]');
+  var quotes = section.querySelectorAll('[data-quote-index]');
+  function select(index) {
+    var i = parseInt(index, 10);
+    items.forEach(function(el) { el.classList.remove('reviews-customer__item--active'); });
+    quotes.forEach(function(el) { el.classList.remove('reviews-customer__quote--active'); });
+    var item = section.querySelector('[data-review-index="' + i + '"]');
+    var quote = section.querySelector('[data-quote-index="' + i + '"]');
+    if (item) item.classList.add('reviews-customer__item--active');
+    if (quote) quote.classList.add('reviews-customer__quote--active');
+  }
+  items.forEach(function(el) {
+    el.addEventListener('click', function() { select(el.getAttribute('data-review-index')); });
+  });
+})();
+</script>
+{% endblock %}

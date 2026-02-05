@@ -1,3 +1,11 @@
+---
+title: Reviews
+template: reviews-grid.html
+hide:
+  - navigation
+  - toc
+---
+
 # Reviews
 
 Total reviews: 5
