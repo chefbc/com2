@@ -1575,3 +1575,164 @@ pre,
     object-fit: cover;
     display: block;
 }
+
+/* ========== Packages page: three-column card layout ========== */
+.md-content:has(.packages-cards) > h1 {
+    text-align: center;
+    margin-bottom: 0.25em;
+}
+.md-content:has(.packages-cards) > h1 + p {
+    text-align: center;
+    color: var(--md-default-fg-color--light, #666);
+    margin-bottom: 2rem;
+}
+.packages-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (max-width: 960px) {
+    .packages-cards {
+        grid-template-columns: 1fr;
+    }
+}
+.packages-card {
+    position: relative;
+    background: var(--md-default-bg-color, #fff);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08), 0 4px 24px rgba(0, 0, 0, 0.04);
+    padding: 0 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.packages-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12), 0 8px 32px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+}
+.packages-card-accent {
+    height: 6px;
+    width: 100%;
+    flex-shrink: 0;
+}
+.packages-card-header {
+    min-height: 11rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 1.25rem 0 0;
+}
+.packages-card--silver .packages-card-accent {
+    background: linear-gradient(90deg, #9ca3af, #6b7280);
+}
+.packages-card--gold .packages-card-accent {
+    background: linear-gradient(90deg, #d4af37, #b8860b);
+}
+.packages-card--platinum .packages-card-accent {
+    background: linear-gradient(90deg, #e5e4e2, #a8a8a8);
+}
+.packages-card-icon {
+    margin: 0 0 1rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.packages-card-icon svg {
+    width: 48px;
+    height: 48px;
+    display: block;
+}
+.packages-card--silver .packages-card-icon svg {
+    color: #6b7280;
+}
+.packages-card--gold .packages-card-icon svg {
+    color: #b8860b;
+}
+.packages-card--platinum .packages-card-icon svg {
+    color: #4b5563;
+}
+.packages-card-title {
+    margin: 0 1rem 0.75rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--md-default-fg-color, #333);
+    line-height: 1.3;
+}
+.packages-card-desc {
+    margin: 0 1rem 0;
+    padding-bottom: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--md-default-fg-color--light, #666);
+}
+.packages-card-includes {
+    width: 100%;
+    padding: 1.25rem 1rem 0;
+    margin-bottom: 0;
+    text-align: left;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+.packages-includes-heading {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--md-default-fg-color, #333);
+    margin: 1.25rem 0 0.5rem;
+}
+.packages-card-includes > .packages-includes-heading:first-child {
+    margin-top: 0;
+}
+.packages-list {
+    margin: 0 0 0 1rem;
+    padding-left: 0.5rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: var(--md-default-fg-color--light, #666);
+}
+.packages-list li {
+    margin-bottom: 0.25rem;
+}
+.packages-card-cta {
+    display: inline-block;
+    margin-top: auto;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s;
+}
+.packages-card--silver .packages-card-cta {
+    background: #6b7280;
+    color: #fff;
+}
+.packages-card--silver .packages-card-cta:hover {
+    background: #4b5563;
+    color: #fff;
+}
+.packages-card--gold .packages-card-cta {
+    background: #b8860b;
+    color: #fff;
+}
+.packages-card--gold .packages-card-cta:hover {
+    background: #996f09;
+    color: #fff;
+}
+.packages-card--platinum .packages-card-cta {
+    background: #374151;
+    color: #fff;
+}
+.packages-card--platinum .packages-card-cta:hover {
+    background: #1f2937;
+    color: #fff;
+}
