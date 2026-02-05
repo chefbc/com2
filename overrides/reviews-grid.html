@@ -2,13 +2,17 @@
 {% extends "main.html" %}
 {% block content %}
 {% set reviews_list = reviews | default([]) %}
+{% set bg_image = page.meta.background_image | default(none) %}
+{% set bg_image_url = (bg_image | url) if bg_image else '' %}
+{% if bg_image_url %}
+<div class="reviews-page-with-bg" style="--reviews-bg-image: url('{{ bg_image_url }}');">
+{% endif %}
 <section class="reviews-customer" data-reviews-section>
   <div class="reviews-customer__accent"></div>
   <h1 class="reviews-customer__title">Customer Reviews</h1>
 
   <div class="reviews-customer__grid">
     <div class="reviews-customer__list" role="list">
-      <div class="reviews-customer__timeline" aria-hidden="true"></div>
       {% for review in reviews_list %}
       <article
         class="reviews-customer__item {% if loop.index0 == 0 %}reviews-customer__item--active{% endif %}"
@@ -51,6 +55,9 @@
     </div>
   </div>
 </section>
+{% if bg_image_url %}
+</div>
+{% endif %}
 
 <script>
 (function() {

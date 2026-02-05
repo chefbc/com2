@@ -1,6 +1,8 @@
 ---
 title: Reviews
 template: reviews-grid.html
+# Background image (path relative to docs/); dimmed so text stays readable
+background_image: assets/ferrari_interior_1.jpg
 hide:
   - navigation
   - toc

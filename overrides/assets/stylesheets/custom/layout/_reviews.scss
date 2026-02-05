@@ -1,17 +1,54 @@
 ////
 /// Customer reviews page – two-column layout with timeline and quote
-/// Template: reviews-grid. Left = reviewer list + curved timeline; right = blockquote
+/// Template: reviews-grid. Left = reviewer list; right = blockquote
+/// Colors use MkDocs Material theme variables (--md-*).
 ////
 
-$reviews-accent-color: #2e7d32;
-$reviews-star-filled: #2e7d32;
-$reviews-timeline: rgba(0, 0, 0, 0.12);
-$reviews-quote-muted: #666;
+// Remove main/content gutters on reviews page so background and layout go edge-to-edge
+.md-main:has(.reviews-customer) {
+  padding-top: 0;
+}
+
+.md-main__inner:has(.reviews-customer) {
+  margin: 0;
+  padding: 0;
+}
+
+.md-content__inner:has(.reviews-customer) {
+  margin: 0;
+  padding: 0;
+}
+
+// Full-page background wrapper when page.meta.background_image is set
+.reviews-page-with-bg {
+  min-height: 100vh;
+  padding-top: 2.4rem; // reserve space for fixed header so bg extends to menu, content starts below
+  background-image: var(--reviews-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--md-default-bg-color);
+    opacity: 0.92;
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
 
 .reviews-customer {
   padding: 2rem 1rem 3rem;
-  max-width: 56rem;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
 
   @media (min-width: 44.9375em) {
     padding: 3rem 2rem 4rem;
@@ -22,7 +59,7 @@ $reviews-quote-muted: #666;
   display: block;
   width: 2.5rem;
   height: 3px;
-  background-color: $reviews-accent-color;
+  background-color: var(--md-primary-fg-color);
   margin-bottom: 0.5rem;
   border-radius: 2px;
 }
@@ -31,7 +68,7 @@ $reviews-quote-muted: #666;
   margin: 0 0 2rem;
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--md-default-fg-color--heading, #1a1a1a);
+  color: var(--md-default-fg-color--heading);
 }
 
 .reviews-customer__grid {
@@ -39,15 +76,17 @@ $reviews-quote-muted: #666;
   grid-template-columns: 1fr;
   gap: 2rem;
   align-items: start;
+  width: 100%;
+  max-width: 100%;
 
   @media (min-width: 44.9375em) {
-    grid-template-columns: minmax(12rem, 1fr) minmax(16rem, 1.5fr);
+    grid-template-columns: minmax(12rem, 1fr) minmax(16rem, 2fr);
     gap: 3rem;
   }
 }
 
 // ----------------------------------------------------------------------------
-// Left column: reviewer list + curved timeline
+// Left column: reviewer list
 // ----------------------------------------------------------------------------
 
 .reviews-customer__list {
@@ -55,27 +94,6 @@ $reviews-quote-muted: #666;
   display: flex;
   flex-direction: column;
   gap: 0;
-}
-
-.reviews-customer__timeline {
-  position: absolute;
-  left: 1.25rem;
-  top: 2rem;
-  bottom: 2rem;
-  width: 2px;
-  background: linear-gradient(
-    to bottom,
-    $reviews-timeline 0%,
-    $reviews-timeline 100%
-  );
-  border-radius: 1px;
-  pointer-events: none;
-
-  @media (min-width: 44.9375em) {
-    left: 1.5rem;
-    border-radius: 2px;
-    box-shadow: 0 0 0 2px transparent;
-  }
 }
 
 .reviews-customer__item {
@@ -90,7 +108,7 @@ $reviews-quote-muted: #666;
   z-index: 1;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: var(--md-default-fg-color--lightest);
   }
 
   &.reviews-customer__item--active {
@@ -107,8 +125,8 @@ $reviews-quote-muted: #666;
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background-color: var(--md-default-fg-color--light, #9e9e9e);
-  color: #fff;
+  background-color: var(--md-default-fg-color--light);
+  color: var(--md-default-bg-color);
   font-size: 0.95rem;
   font-weight: 600;
   display: flex;
@@ -118,7 +136,8 @@ $reviews-quote-muted: #666;
 }
 
 .reviews-customer__item--active .reviews-customer__avatar {
-  background-color: $reviews-accent-color;
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
 }
 
 .reviews-customer__meta {
@@ -131,7 +150,7 @@ $reviews-quote-muted: #666;
 .reviews-customer__name {
   font-weight: 600;
   font-size: 0.95rem;
-  color: var(--md-default-fg-color--heading, #1a1a1a);
+  color: var(--md-default-fg-color--heading);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -143,7 +162,7 @@ $reviews-quote-muted: #666;
   flex-wrap: wrap;
   gap: 0.35rem 0.5rem;
   font-size: 0.8rem;
-  color: var(--md-default-fg-color--lighter, #757575);
+  color: var(--md-default-fg-color--lighter);
 }
 
 .reviews-customer__stars {
@@ -153,17 +172,17 @@ $reviews-quote-muted: #666;
 }
 
 .reviews-customer__star {
-  color: rgba(0, 0, 0, 0.2);
+  color: var(--md-default-fg-color--light);
   font-size: 0.9rem;
   line-height: 1;
 
   &--filled {
-    color: $reviews-star-filled;
+    color: var(--md-primary-fg-color);
   }
 }
 
 .reviews-customer__date {
-  color: var(--md-default-fg-color--lighter, #757575);
+  color: var(--md-default-fg-color--lighter);
 }
 
 // ----------------------------------------------------------------------------
@@ -193,7 +212,7 @@ $reviews-quote-muted: #666;
   top: -0.15em;
   font-size: 4rem;
   line-height: 1;
-  color: rgba(0, 0, 0, 0.08);
+  color: var(--md-default-fg-color--lightest);
   font-family: Georgia, serif;
   pointer-events: none;
 }
@@ -202,20 +221,12 @@ $reviews-quote-muted: #666;
   font-style: italic;
   font-size: 1rem;
   line-height: 1.6;
-  color: $reviews-quote-muted;
-}
-
-[data-md-color-scheme="default"] .reviews-customer__quote-text {
-  color: #555;
-}
-
-[data-md-color-scheme="slate"] .reviews-customer__quote-text {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--md-default-fg-color--lighter);
 }
 
 .reviews-customer__empty {
   padding: 2rem;
   text-align: center;
-  color: var(--md-default-fg-color--lighter, #757575);
+  color: var(--md-default-fg-color--lighter);
   font-style: italic;
 }
