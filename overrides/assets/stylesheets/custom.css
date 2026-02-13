@@ -29,10 +29,8 @@ pre,
     font-family: "Roboto Mono", "Courier New", monospace !important;
 }
 
-/* Home page: header and tabs – hero fades into black (gradient) */
+/* Home page: header overlays hero (fixed position set in home.html); no box shadow */
 body:has(.mdx-container) .md-header {
-    position: relative !important;
-    /* background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.85) 35%, transparent 100%) !important; */
     box-shadow: none !important;
 }
 body:has(.mdx-container) .md-header__inner {
@@ -42,6 +40,7 @@ body:has(.mdx-container) .md-header__inner {
 }
 body:has(.mdx-container) .md-tabs {
     position: relative !important;
+    z-index: 15;
     background-color: transparent !important;
     background: transparent !important;
     background-image: none !important;
@@ -616,10 +615,11 @@ body:has(.mdx-container) .md-main__inner {
     color: var(--md-primary-bg-color);
 }
 
-/* Social media icons in hero - positioned in top right of hero section */
+/* Social media icons in hero - top right, below header and tabs so they sit in hero area */
 .mdx-hero__social {
     position: absolute;
-    top: calc(4.4rem + 1rem);
+    top: calc(4.8rem + 2.4rem + 4rem); /* below header + tabs + gap */
+
     right: 2rem;
     display: flex;
     gap: 1rem;
@@ -659,7 +659,7 @@ body:has(.mdx-container) .md-main__inner {
 
 @media screen and (max-width: 29.984375em) {
     .mdx-hero__social {
-        top: calc(2.4rem + 0.5rem);
+        top: calc(2.4rem + 2.4rem + 0.5rem); /* below header + tabs + gap on small screens */
         right: 1rem;
         gap: 0.5rem;
     }

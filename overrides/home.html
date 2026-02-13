@@ -29,9 +29,9 @@
   <!-- Additional styles for landing page -->
   <style>
 
-    /* Header: hero fades into black (gradient from transparent at bottom to black at top) */
+    /* Header: fixed so it overlays hero; gradient so it sits in front of hero background */
     .md-header {
-      position: relative;
+      position: fixed !important;
       z-index: 20;
       background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.85) 35%, transparent 100%) !important;
       box-shadow: none !important;
@@ -56,9 +56,8 @@
       color: inherit;
     }
 
-    /* Tabs: same fade from hero into black; no backdrop blur */
+    /* Tabs: overlay hero (z-index in custom.css); gradient to sit in front of hero */
     .md-tabs {
-      position: relative;
       z-index: 20;
       background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.9) 40%, transparent 100%) !important;
       backdrop-filter: none !important;
@@ -81,17 +80,17 @@
       font-weight: 600;
     }
 
-    /* Hero: negative margin pulls it behind header/tabs; padding keeps content below */
+    /* Hero: full-bleed from top of page; header/tabs overlay in front via z-index */
     .mdx-container {
       position: relative;
       z-index: 1;
-      margin-top: -4.8rem;
+      margin-top: -7.2rem; /* pull up past header (4.8rem) + tabs (2.4rem) so hero starts at top */
       padding-top: calc(4.8rem + 2.4rem + 1rem);
     }
 
     @media screen and (min-width: 76.25em) {
       .mdx-container {
-        margin-top: -4.8rem;
+        margin-top: -7.2rem;
         padding-top: calc(4.8rem + 2.4rem + 1rem);
       }
     }
