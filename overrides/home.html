@@ -29,19 +29,17 @@
   <!-- Additional styles for landing page -->
   <style>
 
-    /* Header in front of hero: relative + z-index; hero uses negative margin behind */
+    /* Header: hero fades into black (gradient from transparent at bottom to black at top) */
     .md-header {
       position: relative;
       z-index: 20;
-      background-color: transparent !important;
-      background: transparent !important;
-      background-image: none !important;
+      background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.85) 35%, transparent 100%) !important;
       box-shadow: none !important;
     }
 
     .md-header__inner {
-      background-color: transparent !important;
       background: transparent !important;
+      background-color: transparent !important;
       background-image: none !important;
     }
 
@@ -58,18 +56,17 @@
       color: inherit;
     }
 
-    /* Tabs in front of hero */
+    /* Tabs: same fade from hero into black; no backdrop blur */
     .md-tabs {
       position: relative;
       z-index: 20;
-      background-color: transparent !important;
-      background: transparent !important;
-      background-image: none !important;
+      background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.9) 40%, transparent 100%) !important;
+      backdrop-filter: none !important;
     }
 
     .md-tabs__inner {
-      background-color: transparent !important;
       background: transparent !important;
+      background-color: transparent !important;
       background-image: none !important;
     }
 

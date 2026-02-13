@@ -29,17 +29,15 @@ pre,
     font-family: "Roboto Mono", "Courier New", monospace !important;
 }
 
-/* Home page: header and tabs transparent, in front of hero (hero uses negative margin) */
+/* Home page: header and tabs – hero fades into black (gradient) */
 body:has(.mdx-container) .md-header {
     position: relative !important;
-    background-color: transparent !important;
-    background: transparent !important;
-    background-image: none !important;
+    /* background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.85) 35%, transparent 100%) !important; */
     box-shadow: none !important;
 }
 body:has(.mdx-container) .md-header__inner {
-    background-color: transparent !important;
     background: transparent !important;
+    background-color: transparent !important;
     background-image: none !important;
 }
 body:has(.mdx-container) .md-tabs {
@@ -47,10 +45,11 @@ body:has(.mdx-container) .md-tabs {
     background-color: transparent !important;
     background: transparent !important;
     background-image: none !important;
+    backdrop-filter: none !important;
 }
 body:has(.mdx-container) .md-tabs__inner {
-    background-color: transparent !important;
     background: transparent !important;
+    background-color: transparent !important;
     background-image: none !important;
 }
 body:has(.mdx-container) .md-main {
