@@ -1,6 +1,6 @@
 # Engine Bay Detailing
 
-Engine bay cleaning and detailing is available as an add-on or standalone service.
+Engine bay cleaning and detailing is available as an add-on or standalone service. For a full picture of our detailing options, see [Full packages](index.md); for tailored or one-off work, see [custom detailing](custom.md).
 
 A clean engine bay helps with resale value, makes it easier to spot leaks and wear, and keeps your vehicle looking cared-for under the hood.
 

@@ -1,11 +1,24 @@
-/* Apply Chelsea Market font site-wide */
+/* Apply Roboto site-wide and custom primary color */
 :root {
-    --md-text-font: "Chelsea Market", cursive;
+    --md-text-font: Roboto, sans-serif;
+    --md-primary-fg-color: rgb(193, 170, 135);
+    --md-primary-fg-color--light: rgb(215, 200, 170);
+    --md-primary-fg-color--dark: rgb(150, 130, 100);
+}
+
+/* Override theme palette so custom primary colors apply (theme sets these per scheme) */
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"] {
+    --md-primary-fg-color: rgb(193, 170, 135) !important;
+    --md-primary-fg-color--light: rgb(215, 200, 170) !important;
+    --md-primary-fg-color--dark: rgb(150, 130, 100) !important;
+    /* Contrasting text/icon color on primary (for buttons, header, etc.) */
+    --md-primary-bg-color: rgb(45, 40, 33) !important;
 }
 
 body,
 .md-typeset {
-    font-family: "Chelsea Market", cursive;
+    font-family: Roboto, sans-serif;
 }
 
 /* Keep monospace fonts for code */
@@ -16,7 +29,48 @@ pre,
     font-family: "Roboto Mono", "Courier New", monospace !important;
 }
 
-/* Header and tabs are now only transparent on home page via inline styles in home.html */
+/* Home page: header and tabs transparent, in front of hero (hero uses negative margin) */
+body:has(.mdx-container) .md-header {
+    position: relative !important;
+    background-color: transparent !important;
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+body:has(.mdx-container) .md-header__inner {
+    background-color: transparent !important;
+    background: transparent !important;
+    background-image: none !important;
+}
+body:has(.mdx-container) .md-tabs {
+    position: relative !important;
+    background-color: transparent !important;
+    background: transparent !important;
+    background-image: none !important;
+}
+body:has(.mdx-container) .md-tabs__inner {
+    background-color: transparent !important;
+    background: transparent !important;
+    background-image: none !important;
+}
+body:has(.mdx-container) .md-main {
+    position: relative;
+    z-index: 1;
+    background: transparent !important;
+    overflow: visible !important;
+}
+body:has(.mdx-container) .md-main__inner {
+    background: transparent !important;
+    overflow: visible !important;
+}
+
+/* .md-header__button.md-logo {
+    height: 5rem;
+} */
+.md-header__button.md-logo img, .md-header__button.md-logo svg {
+    height: 7rem;
+}
+
 
 /* Make md-main full width */
 .md-main {
@@ -464,7 +518,7 @@ pre,
     margin-bottom: 1.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     letter-spacing: 0.05em;
-    font-family: "Chelsea Market", cursive;
+    font-family: Roboto, sans-serif;
 }
 
 @media screen and (max-width: 29.984375em) {
@@ -479,8 +533,6 @@ pre,
     }
 }
 
-
-.md-typeset h1
 
 .mdx-hero__emoji {
     margin: 1.5rem 0;
@@ -536,32 +588,33 @@ pre,
 }
 
 .mdx-hero .md-button {
-    color: var(--md-primary-bg-color);
+    border-color: var(--md-primary-fg-color);
+    color: var(--md-primary-fg-color);
     margin: 0;
     margin-top: 0.5rem;
 }
 
 .mdx-hero .md-button:focus,
 .mdx-hero .md-button:hover {
-    background-color: var(--md-accent-fg-color);
-    border-color: var(--md-accent-fg-color);
-    color: var(--md-accent-bg-color);
+    background-color: var(--md-primary-fg-color--dark);
+    border-color: var(--md-primary-fg-color--dark);
+    color: var(--md-primary-bg-color);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
 }
 
 .mdx-hero .md-button--primary {
-    background-color: var(--md-primary-bg-color);
-    border-color: var(--md-primary-bg-color);
-    color: #894da8;
+    background-color: var(--md-primary-fg-color);
+    border-color: var(--md-primary-fg-color);
+    color: var(--md-primary-bg-color);
 }
 
 .mdx-hero .md-button--primary:focus,
 .mdx-hero .md-button--primary:hover {
-    background-color: rgba(255, 255, 255, 0.95);
-    border-color: rgba(255, 255, 255, 0.95);
-    color: #894da8;
+    background-color: var(--md-primary-fg-color--dark);
+    border-color: var(--md-primary-fg-color--dark);
+    color: var(--md-primary-bg-color);
 }
 
 /* Social media icons in hero - positioned in top right of hero section */
@@ -622,6 +675,31 @@ pre,
         height: 1rem;
     }
 }
+
+/* Who we are teaser (home page) - dark tint to match Speckless look */
+.mdx-who-we-are-teaser {
+    padding: 2.4rem 1.2rem;
+}
+[data-md-color-scheme="slate"] .mdx-who-we-are-teaser {
+    background-color: var(--md-default-bg-color);
+}
+.mdx-who-we-are-teaser__inner {
+    max-width: 52em;
+    margin: 0 auto;
+    text-align: center;
+}
+.mdx-who-we-are-teaser__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--md-default-fg-color);
+}
+.mdx-who-we-are-teaser__text {
+    margin-bottom: 1rem;
+    color: var(--md-default-fg-color--light);
+    line-height: 1.6;
+}
+
 .md-typeset .mdx-iconsearch {
     background-color: var(--md-default-bg-color);
     border-radius: 0.1rem;
@@ -1488,12 +1566,12 @@ pre,
     color: #bbdefb;
 }
 .mdx-notification-section .bg-custom-darkGray .md-button--primary {
-    background-color: #1976d2;
-    color: #fff;
+    background-color: var(--md-primary-fg-color);
+    color: var(--md-primary-bg-color);
 }
 .mdx-notification-section .bg-custom-darkGray .md-button--primary:hover {
-    background-color: #1565c0;
-    color: #fff;
+    background-color: var(--md-primary-fg-color--dark);
+    color: var(--md-primary-bg-color);
 }
 .mdx-notification-section .bg-custom-darkGray img {
     width: auto;

@@ -1,9 +1,9 @@
 ---
 template: home.html
-title: Material for MkDocs
+title: Speckless Auto Spa
 social:
   cards_layout_options:
-    title: Documentation that simply works
+    title: When clean isn't enough, go with Speckless
 ---
 
-Welcome to Material for MkDocs.
+When clean isn't enough, go with Speckless. Your vehicle preservation and restoration specialists in Waukesha, WI—get a showroom shine every time.

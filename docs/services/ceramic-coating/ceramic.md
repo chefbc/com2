@@ -6,6 +6,8 @@ hide:
 
 # Top-Tier Ceramic Coatings
 
+We are an authorized detailer for **Dr. Beasley's** and use their premium ceramic formulations. [Learn more about us](../../who-we-are.md).
+
 ## About Ceramic Coatings
 
 Ceramic Coatings are the highest grade of protection & gloss enhancement for your vehicle. Unlike traditional waxes & sealants which are just films that sit on the surface of a vehicle, true ceramic coatings create a semi-permanent barrier of protection that bonds with your vehicle's surface providing unmatched durability, protection, gloss, & self-cleaning abilities.

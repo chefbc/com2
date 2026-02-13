@@ -19,20 +19,19 @@
 # IN THE SOFTWARE.
 
 # Project information
-site_name: ChefBC.com
+site_name: Speckless Auto Spa
 #site_url: https://squidfunk.github.io/mkdocs-material/
-site_url: https://chefbc.com
-site_author: Martin Donath
+site_url: https://specklessauto.com
+site_author: Speckless Auto Spa
 site_description: >-
-  Write your documentation in Markdown and create a professional static site in
-  minutes – searchable, customizable, in 60+ languages, for all devices
+  Your vehicle preservation and restoration specialists in Waukesha, WI. Get a showroom shine every time.
 
 # Repository
 #repo_name: squidfunk/mkdocs-material
 #repo_url: https://github.com/squidfunk/mkdocs-material
 
 # Copyright
-copyright: chefbc.com Copyright &copy; 2026 | All Rights Reserved
+copyright: Speckless Auto Spa &copy; 2026 | All Rights Reserved
 
 # Configuration
 theme:
@@ -81,20 +80,20 @@ theme:
         name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: indigo
+      primary: amber
+      accent: amber
       toggle:
         icon: material/toggle-switch
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: black
-      accent: indigo
+      primary: amber
+      accent: amber
       toggle:
         icon: material/toggle-switch-off
         name: Switch to system preference
   font:
-    text: Chelsea Market
+    text: Roboto
     code: Roboto Mono
   favicon: assets/favicon.png
   icon:
@@ -151,14 +150,14 @@ extra:
     google_map_embed_id: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2918.9050766385694!2d-88.34737228803604!3d42.980273171021594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8804ff9da3be63e5%3A0x5cfa18e05992e8b7!2sSpeckless%20Auto%20Spa!5e0!3m2!1sen!2sus!4v1769878437091!5m2!1sen!2sus"
   # Contact form: subject is hidden from user but sent with submission (for email subject line)
   contact_form:
-    subject: "ChefBC.com – New Contact Form Submission"
+    subject: "Speckless Auto Spa – New Contact Form Submission"
+  # Branding: paths relative to docs/. For stock imagery (hero/notification), use Pexels and add to docs/assets/ then set path here or in notification.md.
   branding:
-    header_logo: assets/images/bc.png
-    header_logo_alt: ChefBC.com
-    hero_emoji: assets/images/bc.png
-    hero_emoji_alt: Chef BC
-    # hero_background: assets/images/img/computer.jpg
-    hero_background: assets/images/img/aryan-dhiman-iGLLtLINSkw-unsplash.jpg
+    header_logo: assets/Horizontal-Color-Speckless-Auto-Spa-Logo-2024.png
+    header_logo_alt: Speckless Auto Spa
+    hero_emoji: assets/RGB-Square-Color-Speckless-Auto-Spa-Logo-2024-300x255.webp
+    hero_emoji_alt: Speckless Auto Spa
+    hero_background: assets/Speckless_bg1_overlay.jpg
   status:
     new: Recently added
     deprecated: Deprecated
@@ -181,16 +180,12 @@ extra:
   # Use 'text' for plain text, or 'html' for rich HTML content
   announcement:
     enabled: true
-    # Optional: bar colors (any CSS color: hex, rgb(), name, etc.)
-    background: "#1976d2"
+    # Optional: bar colors (amber for Speckless brand)
+    background: "#e65100"
     color: "#fff"
-    # Simple text announcement
-    # text: "Welcome to ChefBC.com! Check out our latest updates."
-    # Or use HTML for rich content with links and icons
-    # Note: HTML only, Jinja2 templates won't work here
     html: >
-      <strong>Welcome!</strong> Check out our latest updates on
-      <a href="https://github.com/chefbc">GitHub</a>
+      <strong>When clean isn't enough, go with Speckless.</strong>
+      <a href="contact/">Book your service</a> or <a href="packages/">see our packages</a>.
   generator: false
 
 # Extensions
@@ -244,136 +239,23 @@ markdown_extensions:
   - pymdownx.tilde
 
 
-# dynamic with no tree
-# Page tree
+# Page tree – Speckless Auto Spa
 nav:
   - Home: index.md
-  - Getting started:
-    - Installation: getting-started.md
-    - Creating your site: creating-your-site.md
-    - Publishing your site: publishing-your-site.md
-    - Customization: customization.md
-    - Conventions: conventions.md
-    - Browser support: browser-support.md
-    - Enterprise feedback: enterprise-support.md
-    - Philosophy: philosophy.md
-    - Alternatives: alternatives.md
-    - License: license.md
-    - Changelog:
-      - changelog/index.md
-      - How to upgrade: upgrade.md
-    - Contributing:
-      - contributing/index.md
-      - Reporting a bug: contributing/reporting-a-bug.md
-      - Reporting a docs issue: contributing/reporting-a-docs-issue.md
-      - Requesting a change: contributing/requesting-a-change.md
-      - Adding translations: contributing/adding-translations.md
-      - Making a pull request: contributing/making-a-pull-request.md
-      - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
-    - Guides:
-      - Creating a reproduction: guides/creating-a-reproduction.md
-  - Setup:
-    - setup/index.md
-    - Changing the colors: setup/changing-the-colors.md
-    - Changing the fonts: setup/changing-the-fonts.md
-    - Changing the language: setup/changing-the-language.md
-    - Changing the logo and icons: setup/changing-the-logo-and-icons.md
-    - Ensuring data privacy: setup/ensuring-data-privacy.md
-    - Setting up navigation: setup/setting-up-navigation.md
-    - Setting up site search: setup/setting-up-site-search.md
-    - Setting up site analytics: setup/setting-up-site-analytics.md
-    - Setting up social cards: setup/setting-up-social-cards.md
-    - Setting up a blog: setup/setting-up-a-blog.md
-    - Setting up tags: setup/setting-up-tags.md
-    - Setting up versioning: setup/setting-up-versioning.md
-    - Setting up the header: setup/setting-up-the-header.md
-    - Setting up the footer: setup/setting-up-the-footer.md
-    - Adding a git repository: setup/adding-a-git-repository.md
-    - Adding a comment system: setup/adding-a-comment-system.md
-    - Building an optimized site: setup/building-an-optimized-site.md
-    - Building for offline usage: setup/building-for-offline-usage.md
-    - Extensions:
-      - setup/extensions/index.md
-      - Python Markdown: setup/extensions/python-markdown.md
-      - Python Markdown Extensions: setup/extensions/python-markdown-extensions.md
-  - Plugins:
-    - plugins/index.md
-    - Blog: plugins/blog.md
-    - Group: plugins/group.md
-    - Info: plugins/info.md
-    - Meta: plugins/meta.md
-    - Offline: plugins/offline.md
-    - Optimize: plugins/optimize.md
-    - Privacy: plugins/privacy.md
-    - Projects: plugins/projects.md
-    - Search: plugins/search.md
-    - Social: plugins/social.md
-    - Tags: plugins/tags.md
-    - Typeset: plugins/typeset.md
-    - Requirements:
-      - Image processing: plugins/requirements/image-processing.md
-      - Caching: plugins/requirements/caching.md
-
-    
-  - Reference:
-    - reference/index.md
-    - Admonitions: reference/admonitions.md
-    - Annotations: reference/annotations.md
-    - Buttons: reference/buttons.md
-    - Code blocks: reference/code-blocks.md
-    - Content tabs: reference/content-tabs.md
-    - Data tables: reference/data-tables.md
-    - Diagrams: reference/diagrams.md
-    - Footnotes: reference/footnotes.md
-    - Formatting: reference/formatting.md
-    - Grids: reference/grids.md
-    - Icons, Emojis: reference/icons-emojis.md
-    - Images: reference/images.md
-    - Lists: reference/lists.md
-    - Math: reference/math.md
-    - Tooltips: reference/tooltips.md
-  - Insiders:
-    - insiders/index.md
-    - Getting started: insiders/getting-started.md
-    - FAQ: insiders/faq/sponsoring.md
-    - Changelog:
-      - insiders/changelog/index.md
-      - How to upgrade: insiders/upgrade.md
-    - Community Experts Program:
-      - insiders/community-experts-program/index.md
-  - Blog:
-    - blog/index.md
-  # - Web:
-  #   - web/a-full-style-test.md
-  #   - web/crc.md
-  #   - web/gcp-pd.md
-  #   - web/hello.md
-  #   - web/iap.md
-  #   - web/mysql-memory.md
-  #   - web/narrative.md
-  #   - web/notes.md
-  #   - web/os-cheat.md
-  #   - web/portforward.md
-  #   - web/python-env.md
-  #   - web/ssh-snippet.md
-  #   - web/welcome.md
-  #   - web/zachman.md
-  #   - web/git.md
-  #   - web/gitlab.md
-  #   - web/docker.md
-  - Reviews:
-    - reviews/reviews.md
-  - Gallery: gallery.md
-  - Notification: notification.md
-  - Contact: contact.md
+  - Who we are: who-we-are.md
   - Services:
-    # - services/overview.md
-    - Ceramic coating: services/ceramic-coating/ceramic.md
-    - Detailing packages:
-        - Exterior: services/detailing-packages/exterior.md
-        - Interior: services/detailing-packages/interior.md
-        - Engine bay: services/detailing-packages/engine.md
+    - Ceramic Coating: services/ceramic-coating/ceramic.md
+    - Paint correction: services/paint-correction.md
+    - Detailing:
+      - Full packages: services/detailing-packages/index.md
+      - Exterior: services/detailing-packages/exterior.md
+      - Interior: services/detailing-packages/interior.md
+      - Engine bay: services/detailing-packages/engine.md
+      - Custom: services/detailing-packages/custom.md
   - Packages: packages.md
+  - Gallery: gallery.md
+  - Reviews: reviews/reviews.md
+  - Contact: contact.md
 
 
 

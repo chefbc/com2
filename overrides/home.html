@@ -29,38 +29,62 @@
   <!-- Additional styles for landing page -->
   <style>
 
-    /* Application header should be static for the landing page */
+    /* Header in front of hero: relative + z-index; hero uses negative margin behind */
     .md-header {
-      position: initial;
+      position: relative;
+      z-index: 20;
       background-color: transparent !important;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: transparent !important;
+      background-image: none !important;
+      box-shadow: none !important;
     }
 
     .md-header__inner {
-      background-color: rgba(0, 0, 0, 0.1) !important;
-    }
-
-    [data-md-color-scheme="slate"] .md-header__inner {
-      background-color: rgba(0, 0, 0, 0.2) !important;
-    }
-
-    /* Make tabs transparent on home page */
-    .md-tabs {
       background-color: transparent !important;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: transparent !important;
+      background-image: none !important;
+    }
+
+    .md-header .md-header__button,
+    .md-header .md-header__title,
+    .md-header .md-header__topic {
+      color: rgba(255, 255, 255, 0.95) !important;
+    }
+    .md-header .md-header__button:hover,
+    .md-header .md-header__button:focus {
+      color: #fff !important;
+    }
+    .md-header .md-header__button svg {
+      color: inherit;
+    }
+
+    /* Tabs in front of hero */
+    .md-tabs {
+      position: relative;
+      z-index: 20;
+      background-color: transparent !important;
+      background: transparent !important;
+      background-image: none !important;
     }
 
     .md-tabs__inner {
-      background-color: rgba(0, 0, 0, 0.1) !important;
+      background-color: transparent !important;
+      background: transparent !important;
+      background-image: none !important;
     }
 
-    [data-md-color-scheme="slate"] .md-tabs__inner {
-      background-color: rgba(0, 0, 0, 0.2) !important;
+    .md-tabs__link {
+      color: rgba(255, 255, 255, 0.9) !important;
+    }
+    .md-tabs__link:hover {
+      color: #fff !important;
+    }
+    .md-tabs__link--active {
+      color: #fff !important;
+      font-weight: 600;
     }
 
-    /* Position hero behind header and tabs */
+    /* Hero: negative margin pulls it behind header/tabs; padding keeps content below */
     .mdx-container {
       position: relative;
       z-index: 1;
@@ -75,7 +99,7 @@
       }
     }
 
-    /* Remove spacing, as we cannot hide it completely */
+    /* Remove spacing so hero can overlap; main stays transparent (see custom.css) */
     .md-main__inner {
       margin: 0;
     }
@@ -100,7 +124,7 @@
     }
   </style>
 
-  <!-- Hero for landing page -->
+  <!-- Hero for landing page: background only in this section (shows behind header + hero) -->
   {% set hero_bg = config.extra.branding.hero_background | default('assets/images/img/computer.jpg') %}
   <section class="mdx-container" style="background-image: url('{{ hero_bg | url }}'), linear-gradient(to bottom, rgba(10, 11, 12, 0.95), rgba(10, 11, 12, 0.98) 99%, var(--md-default-bg-color) 99%);">
     <!-- Social media icons -->
@@ -126,10 +150,10 @@
       <div class="mdx-hero">
         <!-- Hero content -->
         <div class="mdx-hero__content">
-          <h1 class="mdx-hero__title">CHEFBC.COM</h1>
+          <h1 class="mdx-hero__title">Speckless Auto Spa</h1>
           <div class="mdx-hero__emoji">
             {% set hero_emoji = config.extra.branding.hero_emoji | default('assets/images/bc.png') %}
-            {% set hero_emoji_alt = config.extra.branding.hero_emoji_alt | default('Chef BC') %}
+            {% set hero_emoji_alt = config.extra.branding.hero_emoji_alt | default('Speckless Auto Spa') %}
             <img
               src="{{ hero_emoji | url }}"
               alt="{{ hero_emoji_alt }}"
@@ -138,21 +162,21 @@
               draggable="false"
             >
           </div>
-          <p class="mdx-hero__description">{{ config.site_description or "Technical documentation and resources" }}</p>
+          <p class="mdx-hero__description">{{ config.site_description or "Your vehicle preservation and restoration specialists in Waukesha, WI." }}</p>
           <div class="mdx-hero__actions">
             <a
-              href="{{ page.next_page.url | url }}"
-              title="{{ page.next_page.title | e }}"
+              href="{{ 'packages/' | url }}"
+              title="See packages"
               class="md-button md-button--primary"
             >
-              Get Started
+              See packages
             </a>
             <a
-              href="{{ 'web/' | url }}"
-              title="Web Resources"
+              href="{{ 'contact/' | url }}"
+              title="Contact us"
               class="md-button"
             >
-              Browse Content
+              Book service
             </a>
           </div>
         </div>
@@ -160,203 +184,14 @@
     </div>
   </section>
 
-  <!-- Featured content section -->
-  {# Use blog_posts from hook (already sorted by date, newest first, limited to 11) #}
-  {% set blog_posts = blog_posts | default([]) %}
-  {% set featured_post = blog_posts[0] if blog_posts | length > 0 else none %}
-  {% set small_posts = blog_posts[1:11] if blog_posts | length > 1 else [] %}
-
-  {% if featured_post %}
-  <section class="mdx-featured">
-    <div class="mdx-featured__container">
-      <!-- Large featured post -->
-      <div class="mdx-featured__grid">
-        <!-- Left column: Featured image -->
-        <div class="mdx-featured__image">
-          {% set featured_image = featured_post.meta.image | default('assets/images/img/computer.jpg') %}
-          {% if featured_image[:4] == 'img/' %}
-            {% set featured_image = 'assets/images/' + featured_image %}
-          {% elif featured_image[:7] != 'assets/' and featured_image[:4] != 'http' %}
-            {% set featured_image = 'assets/images/img/' + featured_image %}
-          {% endif %}
-          <a href="{{ featured_post.url | url }}">
-            <img
-              src="{{ featured_image | url }}"
-              alt="{{ featured_post.title | e }}"
-              draggable="false"
-            >
-          </a>
-        </div>
-        <!-- Right column: Featured content -->
-        <div class="mdx-featured__content">
-          {% set post_categories = featured_post.meta.categories | default(featured_post.meta.tags | default([])) %}
-          {% if post_categories %}
-          <div class="mdx-featured__tags">
-            <span class="mdx-featured__tag-prefix">in</span>
-            <a href="{{ ('blog/category/' + post_categories[0] | lower | replace(' ', '-')) | url }}" class="mdx-featured__tag-link">{{ post_categories[0] }}</a>
-          </div>
-          {% endif %}
-          <h2 class="mdx-featured__title">
-            <a href="{{ featured_post.url | url }}">{{ featured_post.title | e }}</a>
-          </h2>
-          <p class="mdx-featured__excerpt">
-            {% if featured_post.meta.excerpt %}
-              {{ featured_post.meta.excerpt | e }}
-            {% elif featured_post.content %}
-              {{ featured_post.content | striptags | truncate(200) }}
-            {% else %}
-              Read more about this topic.
-            {% endif %}
-          </p>
-          <div class="mdx-featured__meta">
-            {% set post_authors = featured_post.meta.authors | default(featured_post.meta.author | default([])) %}
-            {% if post_authors %}
-            <div class="mdx-featured__authors">
-              {% for author in post_authors[:2] %}
-              <a href="{{ ('blog/author/' + author | lower | replace(' ', '-')) | url }}" class="mdx-featured__author-link">
-                {% set author_icon = 'assets/images/authors/' + author | lower | replace(' ', '-') + '.png' %}
-                <span class="mdx-featured__author-avatar">
-                  <img src="{{ author_icon | url }}" alt="{{ author }}" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
-                  <span class="mdx-featured__author-initial">{{ author[0] | upper }}</span>
-                </span>
-                <span class="mdx-featured__author-name">{{ author }}</span>
-              </a>{% if not loop.last %}, {% endif %}
-              {% endfor %}
-            </div>
-            {% endif %}
-            <div class="mdx-featured__meta-details">
-              {% if featured_post.meta.date %}
-              {% set post_date = featured_post.meta.date %}
-              {% if post_date is string %}
-                {% set post_date_str = post_date.split('T')[0] %}
-                {% set date_parts = post_date_str.split('-') %}
-                {% if date_parts | length == 3 %}
-                  {% set months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
-                  {% set month_num = date_parts[1] | int %}
-                  {% set day = date_parts[2] | int %}
-                  <time class="mdx-featured__date">{{ months[month_num - 1] }} {{ day }}, {{ date_parts[0] }}</time>
-                {% else %}
-                  <time class="mdx-featured__date">{{ post_date }}</time>
-                {% endif %}
-              {% else %}
-                {# For non-string dates, convert to string and format #}
-                {% set date_str = post_date | string %}
-                {% set date_parts = date_str.split(' ')[0].split('-') %}
-                {% if date_parts | length == 3 %}
-                  {% set months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
-                  {% set month_num = date_parts[1] | int %}
-                  {% set day = date_parts[2] | int %}
-                  <time class="mdx-featured__date">{{ months[month_num - 1] }} {{ day }}, {{ date_parts[0] }}</time>
-                {% else %}
-                  <time class="mdx-featured__date">{{ date_str }}</time>
-                {% endif %}
-              {% endif %}
-              {% endif %}
-              {% if featured_post.meta.readtime %}
-              <span class="mdx-featured__readtime"> • {{ featured_post.meta.readtime }} min read</span>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Small posts grid -->
-      {% if small_posts | length > 0 %}
-      <div class="mdx-featured__posts-grid">
-        {% for post in small_posts %}
-        <article class="md-post md-post--excerpt">
-          <a href="{{ post.url | url }}" class="md-post__link">
-            {% set post_image = post.meta.image | default('assets/images/img/computer.jpg') %}
-            {% if post_image[:4] == 'img/' %}
-              {% set post_image = 'assets/images/' + post_image %}
-            {% elif post_image[:7] != 'assets/' and post_image[:4] != 'http' %}
-              {% set post_image = 'assets/images/img/' + post_image %}
-            {% endif %}
-            <div class="md-post__image">
-              <img
-                src="{{ post_image | url }}"
-                alt="{{ post.title | e }}"
-                draggable="false"
-              >
-            </div>
-            <div class="md-post__content">
-              {% set post_categories = post.meta.categories | default(post.meta.tags | default([])) %}
-              {% if post_categories %}
-              <div class="md-post__category-section">
-                <span class="md-post__category-prefix">in</span>
-                <a href="{{ ('blog/category/' + post_categories[0] | lower | replace(' ', '-')) | url }}" class="md-post__category-link">{{ post_categories[0] | upper }}</a>
-              </div>
-              {% endif %}
-              <h3 class="md-post__title">{{ post.title | e }}</h3>
-              {% if post.meta.excerpt or post.content %}
-              <p class="md-post__excerpt">
-                {% if post.meta.excerpt %}
-                  {{ post.meta.excerpt | e }}
-                {% elif post.content %}
-                  {{ post.content | striptags | truncate(120) }}
-                {% endif %}
-              </p>
-              {% endif %}
-              <div class="md-post__meta">
-                <div class="md-post__meta-details">
-                  <div class="md-post__author-line">
-                    {% set post_authors = post.meta.authors | default(post.meta.author | default([])) %}
-                    {% if post_authors %}
-                    {% for author in post_authors[:1] %}
-                    <a href="{{ ('blog/author/' + author | lower | replace(' ', '-')) | url }}" class="md-post__author">
-                      {% set author_icon = 'assets/images/authors/' + author | lower | replace(' ', '-') + '.png' %}
-                      <span class="md-post__author-avatar">
-                        <img src="{{ author_icon | url }}" alt="{{ author }}" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
-                        <span class="md-post__author-initial">{{ author[0] | upper }}</span>
-                      </span>
-                      <span class="md-post__author-name">{{ author | upper }}</span>
-                    </a>
-                    {% endfor %}
-                    {% endif %}
-                  </div>
-                  <div class="md-post__meta-line">
-                    {% if post.meta.date %}
-                    {% set post_date = post.meta.date %}
-                    {% if post_date is string %}
-                      {% set post_date_str = post_date.split('T')[0] %}
-                      {% set date_parts = post_date_str.split('-') %}
-                      {% if date_parts | length == 3 %}
-                        {% set months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
-                        {% set month_num = date_parts[1] | int %}
-                        {% set day = date_parts[2] | int %}
-                        <time class="md-post__date">{{ months[month_num - 1] }} {{ day }}, {{ date_parts[0] }}</time>
-                      {% else %}
-                        <time class="md-post__date">{{ post_date }}</time>
-                      {% endif %}
-                    {% else %}
-                      {# For non-string dates, convert to string and format #}
-                      {% set date_str = post_date | string %}
-                      {% set date_parts = date_str.split(' ')[0].split('-') %}
-                      {% if date_parts | length == 3 %}
-                        {% set months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
-                        {% set month_num = date_parts[1] | int %}
-                        {% set day = date_parts[2] | int %}
-                        <time class="md-post__date">{{ months[month_num - 1] }} {{ day }}, {{ date_parts[0] }}</time>
-                      {% else %}
-                        <time class="md-post__date">{{ date_str }}</time>
-                      {% endif %}
-                    {% endif %}
-                    {% endif %}
-                    {% if post.meta.readtime %}
-                    <span class="md-post__readtime"> • {{ post.meta.readtime }} MIN READ</span>
-                    {% endif %}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-        </article>
-        {% endfor %}
-      </div>
-      {% endif %}
+  <!-- Who we are teaser -->
+  <section class="mdx-who-we-are-teaser">
+    <div class="mdx-who-we-are-teaser__inner">
+      <h2 class="mdx-who-we-are-teaser__title">Who we are</h2>
+      <p class="mdx-who-we-are-teaser__text">We are Speckless Auto Spa—your vehicle preservation and restoration specialists in the Milwaukee and Waukesha area. We focus on quality over quantity and treat every car as our own.</p>
+      <a href="{{ 'who-we-are/' | url }}" class="md-button md-button--primary">Learn more</a>
     </div>
   </section>
-  {% endif %}
 
   <!-- Notification section (3 columns, data from docs/notification.md, optional video background) -->
   {% if notification_content %}

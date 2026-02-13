@@ -1,6 +1,6 @@
 # Interior Detailing Packages
 
-Please specify if you would like interior, exterior, or both when booking.
+Please specify if you would like interior, exterior, or both when booking. For a full picture of all detailing options, see [Full packages](index.md). Need something tailored? We also offer [custom detailing](custom.md).
 
 We offer three interior packages: **Silver** (Express), **Gold** (Maintenance), and **Platinum** (Enhancement). Choose the level that matches your vehicle's condition.
 
