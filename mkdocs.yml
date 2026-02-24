@@ -175,6 +175,9 @@ extra:
       link: https://fosstodon.org/@squidfunk
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/squidfunk
+  # Gallery (gallery page): show or hide image descriptions (captions) under each image
+  gallery:
+    show_descriptions: false
   # Announcement bar configuration
   # Set enabled: false to hide the announcement bar
   # Use 'text' for plain text, or 'html' for rich HTML content

@@ -155,6 +155,9 @@ def on_page_content(html: str, *, page: Page, config: MkDocsConfig, files):
     
     docs_dir = config.docs_dir
     albums = get_gallery_images(docs_dir, "downloads")
+    extra = getattr(config, "extra", {}) or {}
+    gallery_config = extra.get("gallery") or {}
+    show_descriptions = gallery_config.get("show_descriptions", True)
     
     if not albums:
         # No images found
@@ -202,14 +205,16 @@ def on_page_content(html: str, *, page: Page, config: MkDocsConfig, files):
             
             # Use anchor tags with data-glightbox - this is the format glightbox expects
             # The href points to the full-size image, and data-gallery groups them
-            # Adding 'glightbox' class to ensure mkdocs-glightbox detects it
+            # When show_descriptions is False, omit data-title so glightbox shows no caption
+            caption_html = f'<div class="gallery-caption">{img_name_escaped}</div>' if show_descriptions else ''
+            title_attr = f' data-title="{img_name_escaped}"' if show_descriptions else ''
             gallery_html += f"""
             <div class="gallery-item">
-                <a href="{img_url_escaped}" class="glightbox" data-glightbox data-gallery="{album_name_escaped}" data-title="{img_name_escaped}">
+                <a href="{img_url_escaped}" class="glightbox" data-glightbox data-gallery="{album_name_escaped}"{title_attr}>
                     <img src="{img_url_escaped}" alt="{img_name_escaped}" loading="lazy" 
                          onerror="console.error('Failed to load:', '{img_url_escaped}');">
                 </a>
-                <div class="gallery-caption">{img_name_escaped}</div>
+                {caption_html}
             </div>
 """
         
