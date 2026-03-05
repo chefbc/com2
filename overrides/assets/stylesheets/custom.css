@@ -52,7 +52,17 @@ body:has(.mdx-container) .md-tabs {
     background: transparent !important;
     background-image: none !important;
     backdrop-filter: none !important;
-    padding-left: 200px !important;
+    padding-left: 2rem !important;
+}
+/* When announcement bar is present on home, push tabs down */
+body:has(.mdx-home-announce) .md-tabs {
+    top: 7.6rem !important;
+}
+/* Mobile: hide tabs row, use drawer for nav (same as who-we-are) */
+@media screen and (max-width: 76.24em) {
+    body:has(.mdx-container) .md-tabs {
+        display: none !important;
+    }
 }
 body:has(.mdx-container) .md-tabs__inner {
     background: transparent !important;
@@ -74,11 +84,32 @@ body:has(.mdx-container) .md-main__inner {
     overflow: visible !important;
 }
 
-/* .md-header__button.md-logo {
-    height: 5rem;
-} */
+/* Logo: responsive sizing so header controls (search, palette) stay visible */
 .md-header__button.md-logo img, .md-header__button.md-logo svg {
     height: 7rem;
+}
+@media screen and (max-width: 76.24em) {
+    .md-header__button.md-logo img, .md-header__button.md-logo svg {
+        height: 2.4rem;
+    }
+}
+@media screen and (max-width: 44.984375em) {
+    .md-header__button.md-logo img, .md-header__button.md-logo svg {
+        height: 2rem;
+    }
+}
+/* Ensure search and palette toggle remain accessible on mobile */
+@media screen and (max-width: 76.24em) {
+    body:has(.mdx-container) .md-header__inner {
+        flex-wrap: nowrap !important;
+    }
+    body:has(.mdx-container) .md-header__options {
+        flex-shrink: 0 !important;
+    }
+    body:has(.mdx-container) .md-header__button[for="__search"],
+    body:has(.mdx-container) .md-header__button[data-md-color-switch] {
+        flex-shrink: 0 !important;
+    }
 }
 
 
@@ -311,6 +342,14 @@ body:has(.mdx-container) .md-main__inner {
 }
 .md-banner {
     color: var(--md-footer-fg-color--lighter);
+}
+/* Home page: announcement fixed at top, above header */
+.mdx-home-announce {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 25 !important;
 }
 .md-banner strong {
     white-space: nowrap;
@@ -627,16 +666,19 @@ body:has(.mdx-container) .md-main__inner {
     color: var(--md-primary-bg-color);
 }
 
-/* Social media icons in hero - top right, below header and tabs so they sit in hero area */
+/* Social media icons - right on desktop (outside hero), centered on mobile (in hero) */
+.mdx-hero {
+    position: relative;
+}
 .mdx-hero__social {
-    position: absolute;
-    top: calc(4.8rem + 2.4rem + 4rem); /* below header + tabs + gap */
-
-    right: 2rem;
     display: flex;
     gap: 1rem;
-    z-index: 10;
     pointer-events: auto;
+}
+
+/* Desktop-only: fixed top-right, outside mdx-container stacking context so above header */
+.mdx-hero__social--desktop {
+    display: none;
 }
 
 .mdx-hero__social-link {
@@ -669,11 +711,42 @@ body:has(.mdx-container) .md-main__inner {
     fill: currentColor;
 }
 
+/* Desktop: social fixed top-right, above header (outside mdx-container stacking context) */
+@media screen and (min-width: 76.25em) {
+    body:has(.mdx-container) .mdx-hero__social--desktop {
+        display: flex;
+        position: fixed;
+        top: 1rem;
+        right: 2rem;
+        z-index: 50;
+    }
+    body:has(.mdx-container) .mdx-hero__social--mobile {
+        display: none;
+    }
+}
+
+/* Mobile/tablet: social in hero, centered below description */
+@media screen and (max-width: 76.24em) {
+    body:has(.mdx-container) .mdx-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .mdx-hero__social--mobile {
+        position: static;
+        width: 100%;
+        align-self: stretch;
+        display: flex;
+        justify-content: center;
+        margin: 1.5rem auto;
+        box-sizing: border-box;
+    }
+}
+
 @media screen and (max-width: 29.984375em) {
-    .mdx-hero__social {
-        top: calc(2.4rem + 2.4rem + 0.5rem); /* below header + tabs + gap on small screens */
-        right: 1rem;
+    .mdx-hero__social--mobile {
         gap: 0.5rem;
+        margin: 1rem auto;
     }
     
     .mdx-hero__social-link {

@@ -18,8 +18,13 @@
 
 ## Backlog
 
+- [ ] [Header] Add background image behind header, should be transparent.
 - [ ] [Documentation] Add or update README with local build/serve instructions
 - [ ] [Low] Consider adding --md-primary-fg-color--light/--dark tweaks if hover states need refinement
+- [ ] [Homepage] Figure out header and hero transition.
+- [ ] [Override] Would like a service page override.
+- [ ] [Snippets] read folder, use overides and have slug.
+
 
 ---
 
