@@ -53,7 +53,7 @@ jobs:
         run: mkdocs build
 
       - name: Link Checker
-        if: github.event_name != 'workflow_dispatch' || inputs.run_link_checker != false
+        if: github.event_name != 'workflow_dispatch' || inputs.run_link_checker == 'true'
         uses: lycheeverse/lychee-action@v2
         with:
           args: --verbose --no-progress --accept 200,401,403 --exclude-all-private --insecure --remap "https://console-openshift-console.apps-crc.testing https://google.com" './site/**/*.html'
