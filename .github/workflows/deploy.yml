@@ -2,11 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
@@ -16,6 +12,26 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+
+      - name: Set deployment config
+        id: config
+        env:
+          BRANCH: ${{ github.head_ref || github.ref_name }}
+          REPO_OWNER: ${{ github.repository_owner }}
+          REPO_NAME: ${{ github.event.repository.name }}
+        run: |
+          if [ "$BRANCH" = "main" ]; then
+            echo "destination_dir=" >> $GITHUB_OUTPUT
+            echo "site_url=https://${REPO_OWNER}.github.io/${REPO_NAME}/" >> $GITHUB_OUTPUT
+          else
+            SAFE_BRANCH=$(echo "$BRANCH" | sed 's/\//-/g')
+            echo "destination_dir=preview/${SAFE_BRANCH}" >> $GITHUB_OUTPUT
+            echo "site_url=https://${REPO_OWNER}.github.io/${REPO_NAME}/preview/${SAFE_BRANCH}/" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Configure site URL
+        run: |
+          sed -i "s|^site_url:.*|site_url: ${{ steps.config.outputs.site_url }}|" mkdocs.yml
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -47,7 +63,8 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
-        if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
+          destination_dir: ${{ steps.config.outputs.destination_dir }}
+          keep_files: true
