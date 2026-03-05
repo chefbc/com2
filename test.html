@@ -1,0 +1,88 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Text Color</title>
+    <style>
+        @font-face {
+            font-family: 'SuperMario256';
+            src: url('SuperMario256.ttf') format('truetype'); /* Replace with the path to your font file */
+        }
+
+        .text {
+            font-size: 48px;
+            font-family: 'SuperMario256';
+            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+        }
+
+        .text span {
+            margin: 0 2px;
+        }
+    </style>
+</head>
+<body>
+    <p class="text" id="text-container"></p>
+
+    <script>
+        const colors = ["#009CDA", "#FCD000", "#E71E07", "#42B132"];
+        const textContainer = document.getElementById("text-container");
+
+        function setText(text) {
+            let coloredText = "";
+            for (let i = 0; i < text.length; i++) {
+                coloredText += `<span style="color: ${colors[i % colors.length]}">${text[i]}</span>`;
+            }
+            textContainer.innerHTML = coloredText;
+        }
+
+        setText("This is a sample text.");
+    </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Text Color</title>
+    <style>
+        @font-face {
+            font-family: 'SuperMario256';
+            src: url('SuperMario256.ttf') format('truetype'); /* Replace with the path to your font file */
+        }
+
+        .text {
+            font-size: 48px;
+            font-family: 'SuperMario256';
+            text-shadow:
+                -7px 0 black,
+                0 7px black,
+                4px 0 black,
+                0 -4px black; 
+        }
+
+        .text span {
+            margin: 0 2px;
+        }
+    </style>
+</head>
+<body>
+    <p class="text" id="text-container"></p>
+
+    <script>
+        const colors = ["#009CDA", "#FCD000", "#E71E07", "#42B132"];
+        const textContainer = document.getElementById("text-container");
+
+        function setText(text) {
+            let coloredText = "";
+            for (let i = 0; i < text.length; i++) {
+                coloredText += `<span style="color: ${colors[i % colors.length]}">${text[i]}</span>`;
+            }
+            textContainer.innerHTML = coloredText;
+        }
+
+        setText("chefbc.com");
+    </script>
+</body>
+</html>
