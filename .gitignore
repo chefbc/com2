@@ -163,3 +163,14 @@ cython_debug/
 .idea/
 *.DS_Store
 .vscode/
+
+# Google API credentials and tokens
+token.json
+credentials.json
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!mkdocs.yml
+!reviews.json
+worktrees/
