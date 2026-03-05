@@ -1,26 +1,66 @@
+# Deploy to GitHub Pages (main + branch previews)
+# Required: Settings -> Pages -> Source = "Deploy from a branch", Branch = gh-pages, Folder = / (root)
+# See https://squidfunk.github.io/mkdocs-material/publishing-your-site/
+
 name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
   workflow_dispatch:
+    inputs:
+      run_link_checker:
+        description: 'Run link checker'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v4
+
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
+      - name: Set deployment config
+        id: config
+        env:
+          BRANCH: ${{ github.head_ref || github.ref_name }}
+          REPO_OWNER: ${{ github.repository_owner }}
+          REPO_NAME: ${{ github.event.repository.name }}
+        run: |
+          if [ "$BRANCH" = "main" ]; then
+            echo "destination_dir=" >> $GITHUB_OUTPUT
+            echo "site_url=https://${REPO_OWNER}.github.io/${REPO_NAME}/" >> $GITHUB_OUTPUT
+          else
+            SAFE_BRANCH=$(echo "$BRANCH" | sed 's/\//-/g')
+            echo "destination_dir=preview/${SAFE_BRANCH}" >> $GITHUB_OUTPUT
+            echo "site_url=https://${REPO_OWNER}.github.io/${REPO_NAME}/preview/${SAFE_BRANCH}/" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Configure site URL
+        run: |
+          sed -i "s|^site_url:.*|site_url: ${{ steps.config.outputs.site_url }}|" mkdocs.yml
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+      - uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: ~/.cache
+          restore-keys: |
+            mkdocs-material-
 
       - name: Install dependencies
         run: |
@@ -31,6 +71,7 @@ jobs:
         run: mkdocs build
 
       - name: Link Checker
+        if: github.event_name != 'workflow_dispatch' || inputs.run_link_checker == 'true'
         uses: lycheeverse/lychee-action@v2
         with:
           args: --verbose --no-progress --accept 200,401,403 --exclude-all-private --insecure --remap "https://console-openshift-console.apps-crc.testing https://google.com" './site/**/*.html'
@@ -46,8 +87,17 @@ jobs:
           temporaryPublicStorage: true
 
       - name: Deploy to GitHub Pages
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork != true
         uses: peaceiris/actions-gh-pages@v4
-        if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
+          destination_dir: ${{ steps.config.outputs.destination_dir }}
+          keep_files: true
+
+      - name: Preview URL
+        if: steps.config.outputs.destination_dir != ''
+        run: |
+          echo "### Preview deployed :rocket:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**URL:** https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ steps.config.outputs.destination_dir }}/" >> $GITHUB_STEP_SUMMARY

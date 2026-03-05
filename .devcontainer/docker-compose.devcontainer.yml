@@ -1,0 +1,7 @@
+# Devcontainer override: mount full workspace for editing all project files
+services:
+  web:
+    volumes:
+      - ..:/app
+    # Override command so container stays open for dev (mkdocs runs via postStartCommand)
+    command: sleep infinity
