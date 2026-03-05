@@ -69,9 +69,17 @@ jobs:
           temporaryPublicStorage: true
 
       - name: Deploy to GitHub Pages
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork != true
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
           destination_dir: ${{ steps.config.outputs.destination_dir }}
           keep_files: true
+
+      - name: Preview URL
+        if: steps.config.outputs.destination_dir != ''
+        run: |
+          echo "### Preview deployed :rocket:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**URL:** https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ steps.config.outputs.destination_dir }}/" >> $GITHUB_STEP_SUMMARY
