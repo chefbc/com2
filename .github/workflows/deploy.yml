@@ -31,7 +31,7 @@ jobs:
         run: mkdocs build
 
       - name: Link Checker
-        uses: lycheelabs/lychee-action@v2
+        uses: lycheeverse/lychee-action@v2
         with:
           args: --verbose --no-progress './site/**/*.html'
           fail: true
