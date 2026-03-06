@@ -1,0 +1,232 @@
+////
+/// Customer reviews page – two-column layout with timeline and quote
+/// Template: reviews-grid. Left = reviewer list; right = blockquote
+/// Colors use MkDocs Material theme variables (--md-*).
+////
+
+// Remove main/content gutters on reviews page so background and layout go edge-to-edge
+.md-main:has(.reviews-customer) {
+  padding-top: 0;
+}
+
+.md-main__inner:has(.reviews-customer) {
+  margin: 0;
+  padding: 0;
+}
+
+.md-content__inner:has(.reviews-customer) {
+  margin: 0;
+  padding: 0;
+}
+
+// Full-page background wrapper when page.meta.background_image is set
+.reviews-page-with-bg {
+  min-height: 100vh;
+  padding-top: 2.4rem; // reserve space for fixed header so bg extends to menu, content starts below
+  background-image: var(--reviews-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--md-default-bg-color);
+    opacity: 0.92;
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.reviews-customer {
+  padding: 2rem 1rem 3rem;
+  width: 100%;
+  margin: 0;
+
+  @media (min-width: 44.9375em) {
+    padding: 3rem 2rem 4rem;
+  }
+}
+
+.reviews-customer__accent {
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  background-color: var(--md-primary-fg-color);
+  margin-bottom: 0.5rem;
+  border-radius: 2px;
+}
+
+.reviews-customer__title {
+  margin: 0 0 2rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--md-default-fg-color--heading);
+}
+
+.reviews-customer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+
+  @media (min-width: 44.9375em) {
+    grid-template-columns: minmax(12rem, 1fr) minmax(16rem, 2fr);
+    gap: 3rem;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Left column: reviewer list
+// ----------------------------------------------------------------------------
+
+.reviews-customer__list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.reviews-customer__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0.75rem 0.75rem 0;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+  z-index: 1;
+
+  &:hover {
+    background-color: var(--md-default-fg-color--lightest);
+  }
+
+  &.reviews-customer__item--active {
+    opacity: 1;
+  }
+
+  &:not(.reviews-customer__item--active) {
+    opacity: 0.85;
+  }
+}
+
+.reviews-customer__avatar {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--md-default-fg-color--light);
+  color: var(--md-default-bg-color);
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.reviews-customer__item--active .reviews-customer__avatar {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+}
+
+.reviews-customer__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.reviews-customer__name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--md-default-fg-color--heading);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reviews-customer__rating-date {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  font-size: 0.8rem;
+  color: var(--md-default-fg-color--lighter);
+}
+
+.reviews-customer__stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.05rem;
+}
+
+.reviews-customer__star {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.9rem;
+  line-height: 1;
+
+  &--filled {
+    color: var(--md-primary-fg-color);
+  }
+}
+
+.reviews-customer__date {
+  color: var(--md-default-fg-color--lighter);
+}
+
+// ----------------------------------------------------------------------------
+// Right column: blockquote with large quotation mark
+// ----------------------------------------------------------------------------
+
+.reviews-customer__quote-wrap {
+  position: relative;
+  min-height: 8rem;
+}
+
+.reviews-customer__quote {
+  display: none;
+  margin: 0;
+  padding: 0 0 0 2.5rem;
+  position: relative;
+  border: none;
+
+  &.reviews-customer__quote--active {
+    display: block;
+  }
+}
+
+.reviews-customer__quote-mark {
+  position: absolute;
+  left: 0;
+  top: -0.15em;
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--md-default-fg-color--lightest);
+  font-family: Georgia, serif;
+  pointer-events: none;
+}
+
+.reviews-customer__quote-text {
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--md-default-fg-color--lighter);
+}
+
+.reviews-customer__empty {
+  padding: 2rem;
+  text-align: center;
+  color: var(--md-default-fg-color--lighter);
+  font-style: italic;
+}

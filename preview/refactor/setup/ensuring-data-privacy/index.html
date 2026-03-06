@@ -1,0 +1,1604 @@
+<!--
+  Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+--><!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Your vehicle preservation and restoration specialists in Waukesha, WI. Get a showroom shine every time.">
+      
+      
+        <meta name="author" content="Speckless Auto Spa">
+      
+      
+        <link rel="canonical" href="https://chefbc.github.io/com2/preview/refactor/setup/ensuring-data-privacy/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>Ensuring data privacy - Speckless Auto Spa</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config",""),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+
+  <!-- Extra style sheets (can't be set in mkdocs.yml due to content hash) -->
+  <link rel="stylesheet" href="../../assets/stylesheets/custom.css">
+
+  
+    
+  <style>
+    .md-banner {
+      background-color: #e65100;
+      color: #fff;
+    }
+  </style>
+    
+  
+
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ensuring-data-privacy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+              </button>
+            
+            
+  
+    
+      <div style="text-align: center">
+      
+        <strong>When clean isn't enough, go with Speckless.</strong> <a href="contact/">Book your service</a> or <a href="packages/">see our packages</a>.
+
+      
+      </div>
+    
+  
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Speckless Auto Spa" class="md-header__button md-logo" aria-label="Speckless Auto Spa" data-md-component="logo">
+      
+
+
+
+
+
+
+  </a><a class="md-header__button md-logo" href="../.." aria-label="Speckless Auto Spa">
+    <img src="../../assets/Horizontal-Color-Speckless-Auto-Spa-Logo-2024.png" alt="Speckless Auto Spa" loading="lazy">
+  </a>
+
+    
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Speckless Auto Spa
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ensuring data privacy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1M8 13h8v-2H8zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4a5 5 0 0 0 5-5 5 5 0 0 0-5-5"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="amber" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="amber" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5M7 15a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../who-we-are/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Who we are
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../services/ceramic-coating/ceramic/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Services
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../packages/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../gallery/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Gallery
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../reviews/reviews/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Reviews
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Contact
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Speckless Auto Spa" class="md-nav__button md-logo" aria-label="Speckless Auto Spa" data-md-component="logo">
+      
+
+
+
+
+
+
+  </a><a class="md-header__button md-logo" href="../.." aria-label="Speckless Auto Spa">
+    <img src="../../assets/Horizontal-Color-Speckless-Auto-Spa-Logo-2024.png" alt="Speckless Auto Spa" loading="lazy">
+  </a>
+
+    
+    Speckless Auto Spa
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../who-we-are/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Who we are
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Services
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Services
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/ceramic-coating/ceramic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ceramic Coating
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/paint-correction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paint correction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../services/detailing-packages/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detailing
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Detailing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/detailing-packages/exterior/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exterior
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/detailing-packages/interior/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interior
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/detailing-packages/engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engine bay
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/detailing-packages/custom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Packages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gallery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gallery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reviews/reviews/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reviews
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cookie-consent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cookie consent
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cookie consent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-cookie-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change cookie settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-privacy-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in privacy plugin
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in privacy plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-cookies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom cookies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+  
+                  
+
+
+
+<h1 id="ensuring-data-privacy">Ensuring data privacy<a class="headerlink" href="#ensuring-data-privacy" title="Permanent link">¶</a></h1>
+<p>Material for MkDocs makes compliance with data privacy regulations very easy,
+as it offers a native <a href="#cookie-consent">cookie consent</a> solution to seek explicit consent from
+users before setting up <a href="../setting-up-site-analytics/">analytics</a>. Additionally, external assets can be
+automatically downloaded for <a href="#built-in-privacy-plugin">self-hosting</a>.</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">¶</a></h2>
+<h3 id="cookie-consent">Cookie consent<a class="headerlink" href="#cookie-consent" title="Permanent link">¶</a></h3>
+<!-- md:version 8.4.0 -->
+<!-- md:default none -->
+<!-- md:flag experimental -->
+<!-- md:example cookie-consent -->
+
+<p>Material for MkDocs ships a native and extensible cookie consent form which
+asks the user for consent prior to sending requests to third parties. Add the
+following to <code>mkdocs.yml</code>:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">extra</span><span class="p">:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">consent</span><span class="p">:</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cookie consent</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span><span class="w"> </span><span class="c1"># (1)!</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">      </span><span class="no">We use cookies to recognize your repeated visits and preferences, as well</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">      </span><span class="no">as to measure the effectiveness of our documentation and whether users</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">      </span><span class="no">find what they're searching for. With your consent, you're helping us to</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">      </span><span class="no">make our documentation better.</span>
+</span></code></pre></div>
+<ol>
+<li>You can add arbitrary HTML tags in the <code>description</code>, e.g. to link to your
+    terms of service or other parts of the site.</li>
+</ol>
+<p>The following properties are available:</p>
+<dl>
+<dt><!-- md:option consent.title -->
+</dt>
+<dd>
+<p><!-- md:default none --> <!-- md:flag required -->
+This property sets the title of the cookie consent, which is rendered at the
+top of the form and must be set to a non-empty string.</p>
+</dd>
+<dt><!-- md:option consent.description -->
+</dt>
+<dd>
+<p><!-- md:default none --> <!-- md:flag required -->
+This property sets the description of the cookie consent, is rendered below
+the title, and may include raw HTML (e.g. a links to the terms of service).</p>
+</dd>
+<dt><!-- md:option consent.cookies -->
+</dt>
+<dd>
+<p><!-- md:default none --> This property allows to add custom
+cookies or change the initial <code>checked</code> state and name of built-in cookies.
+Currently, the following cookies are built-in:</p>
+<ul>
+<li><strong>Google Analytics</strong> – <code>analytics</code> (enabled by default)</li>
+<li><strong>GitHub</strong> – <code>github</code> (enabled by default)</li>
+</ul>
+<p>Each cookie must receive a unique identifier which is used as a key in the
+<code>cookies</code> map, and can be either set to a string, or to a map defining
+<code>name</code> and <code>checked</code> state:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="cookie-consent-custom-cookie-name" name="__tabbed_1" type="radio"><input id="cookie-consent-custom-initial-state" name="__tabbed_1" type="radio"><input id="cookie-consent-custom-cookie" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="cookie-consent-custom-cookie-name">Custom cookie name</label><label for="cookie-consent-custom-initial-state">Custom initial state</label><label for="cookie-consent-custom-cookie">Custom cookie</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">extra</span><span class="p">:</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">consent</span><span class="p">:</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">cookies</span><span class="p">:</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">      </span><span class="nt">analytics</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Custom name</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">extra</span><span class="p">:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">consent</span><span class="p">:</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">cookies</span><span class="p">:</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">      </span><span class="nt">analytics</span><span class="p">:</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Google Analytics</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="nt">checked</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">extra</span><span class="p">:</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">consent</span><span class="p">:</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">cookies</span><span class="p">:</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">      </span><span class="nt">analytics</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Google Analytics</span><span class="w"> </span><span class="c1"># (1)!</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">      </span><span class="nt">custom</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Custom cookie</span>
+</span></code></pre></div>
+<ol>
+<li>If you define a custom cookie as part of the <code>cookies</code> property,
+    the <code>analytics</code> cookie must be added back explicitly, or analytics
+    won't be triggered.</li>
+</ol>
+</div>
+</div>
+</div>
+<p>If Google Analytics was configured via <code>mkdocs.yml</code>, the cookie consent will
+automatically include a setting for the user to disable it. <a href="#custom-cookies">Custom cookies</a>
+can be used from JavaScript.</p>
+</dd>
+<dt><!-- md:option consent.actions -->
+</dt>
+<dd>
+<p><!-- md:default <code>[accept, manage]</code> --> This property defines
+which buttons are shown and in which order, e.g. to allow the user to accept
+cookies and manage settings:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">extra</span><span class="p">:</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">consent</span><span class="p">:</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">actions</span><span class="p">:</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">accept</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manage</span><span class="w"> </span><span class="c1"># (1)!</span>
+</span></code></pre></div>
+<ol>
+<li>If the <code>manage</code> settings button is omitted from the <code>actions</code> property,
+    the settings are always shown.</li>
+</ol>
+<p>The cookie consent form includes three types of buttons:</p>
+<ul>
+<li><code>accept</code> – Button to accept selected cookies</li>
+<li><code>reject</code> – Button to reject all cookies</li>
+<li><code>manage</code> – Button to manage settings</li>
+</ul>
+</dd>
+</dl>
+<p>When a user first visits your site, a cookie consent form is rendered:</p>
+<p><a href="../../assets/screenshots/consent.png"><img alt="Cookie consent enabled" src="../../assets/screenshots/consent.png"></a></p>
+<h4 id="change-cookie-settings">Change cookie settings<a class="headerlink" href="#change-cookie-settings" title="Permanent link">¶</a></h4>
+<p>In order to comply with GDPR, users must be able to change their cookie settings
+at any time. This can be done by adding a simple link to your <a href="../setting-up-the-footer/#copyright-notice">copyright notice</a>
+in <code>mkdocs.yml</code>:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">copyright</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="no">Copyright &amp;copy; 2016 - 2024 Martin Donath –</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="no">&lt;a href="#__consent"&gt;Change cookie settings&lt;/a&gt;</span>
+</span></code></pre></div>
+<h3 id="built-in-privacy-plugin">Built-in privacy plugin<a class="headerlink" href="#built-in-privacy-plugin" title="Permanent link">¶</a></h3>
+<!-- md:version 9.5.0 -->
+<!-- md:plugin [privacy][built-in privacy plugin] -->
+<!-- md:flag experimental -->
+
+<p>The built-in privacy plugin automatically identifies external assets as part
+of the build process and downloads all assets for very simple self-hosting. Add
+the following lines to <code>mkdocs.yml</code>:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">plugins</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">privacy</span>
+</span></code></pre></div>
+<p>For a list of all settings, please consult the <a href="../../plugins/privacy/">plugin documentation</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Hosting images externally and optimizing them automatically</p>
+<p>This option makes the <a href="../../plugins/privacy/">built-in privacy plugin</a> an excellent choice for
+when you want to host assets like images outside of your git repository
+in another location to keep them fresh and your repository lean.</p>
+<p>Additionally, as of <!-- md:version insiders-4.30.0 -->, the
+built-in privacy plugin was entirely rewritten and now works perfectly
+with the <a href="../../plugins/optimize/">built-in optimize plugin</a>, which means that external assets
+can be passed through the same optimization pipeline as the rest of your
+documentation. This means you can store and edit unoptimized files
+outside of your repository, and let both plugins built a highly
+optimized site for you.</p>
+<p>If you want to implement separate pipelines, i.e., optimize some images
+differently from others or exclude some images from downloading, you can
+use multiple instances of the <a href="../../plugins/privacy/">built-in privacy plugin</a>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Why can't Material for MkDocs bundle all assets by design?</p>
+<p>The primary reason why Material for MkDocs can't just bundle all of its own
+assets is the integration with <a href="../changing-the-fonts/">Google Fonts</a>, which offers over a thousand
+different fonts that can be used to render your documentation. Most of the
+fonts include several weights and are split up into different character sets
+to keep the download size small, so the browser only downloads what is
+really needed. For Roboto, our default <a href="../changing-the-fonts/#regular-font">regular font</a>, this results in <a href="#example">42
+<code>*.woff2</code> files in total</a>.</p>
+<p>If Material for MkDocs would bundle all font files, the download size would
+be in the hundreds of megabytes, slowing down automated builds. Furthermore,
+authors might add external assets like third-party scripts or style sheets
+that would need to be remembered to be defined as further local assets.</p>
+<p>This is the very reason the <a href="../../plugins/privacy/">built-in privacy plugin</a> exists — it automates
+the process of downloading all external assets manually to ensure compliance
+with GDPR with some some [technical limitations].</p>
+</div>
+<details class="example">
+<summary>Expand to inspect example</summary>
+<p>For the official documentation, the <a href="../../plugins/privacy/">built-in privacy plugin</a> downloads the
+following resources:</p>
+<div id="example" class="language-sh no-copy highlight"><pre><span></span><code><span id="__span-example-1"><a id="__codelineno-example-1" name="__codelineno-example-1" href="#__codelineno-example-1"></a>.
+</span><span id="__span-example-2"><a id="__codelineno-example-2" name="__codelineno-example-2" href="#__codelineno-example-2"></a>└─<span class="w"> </span>assets/external/
+</span><span id="__span-example-3"><a id="__codelineno-example-3" name="__codelineno-example-3" href="#__codelineno-example-3"></a><span class="w">   </span>├─<span class="w"> </span>unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+</span><span id="__span-example-4"><a id="__codelineno-example-4" name="__codelineno-example-4" href="#__codelineno-example-4"></a><span class="w">   </span>├─<span class="w"> </span>fonts.googleapis.com/css
+</span><span id="__span-example-5"><a id="__codelineno-example-5" name="__codelineno-example-5" href="#__codelineno-example-5"></a><span class="w">   </span>├─<span class="w"> </span>fonts.gstatic.com/s/
+</span><span id="__span-example-6"><a id="__codelineno-example-6" name="__codelineno-example-6" href="#__codelineno-example-6"></a><span class="w">   </span>│<span class="w">  </span>├─<span class="w"> </span>roboto/v29/
+</span><span id="__span-example-7"><a id="__codelineno-example-7" name="__codelineno-example-7" href="#__codelineno-example-7"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOjCnqEu92Fr1Mu51TjASc-CsTKlA.woff2
+</span><span id="__span-example-8"><a id="__codelineno-example-8" name="__codelineno-example-8" href="#__codelineno-example-8"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOjCnqEu92Fr1Mu51TjASc0CsTKlA.woff2
+</span><span id="__span-example-9"><a id="__codelineno-example-9" name="__codelineno-example-9" href="#__codelineno-example-9"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOjCnqEu92Fr1Mu51TjASc1CsTKlA.woff2
+</span><span id="__span-example-10"><a id="__codelineno-example-10" name="__codelineno-example-10" href="#__codelineno-example-10"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOjCnqEu92Fr1Mu51TjASc2CsTKlA.woff2
+</span><span id="__span-example-11"><a id="__codelineno-example-11" name="__codelineno-example-11" href="#__codelineno-example-11"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOjCnqEu92Fr1Mu51TjASc3CsTKlA.woff2
+</span><span id="__span-example-12"><a id="__codelineno-example-12" name="__codelineno-example-12" href="#__codelineno-example-12"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOjCnqEu92Fr1Mu51TjASc5CsTKlA.woff2
+</span><span id="__span-example-13"><a id="__codelineno-example-13" name="__codelineno-example-13" href="#__codelineno-example-13"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOjCnqEu92Fr1Mu51TjASc6CsQ.woff2
+</span><span id="__span-example-14"><a id="__codelineno-example-14" name="__codelineno-example-14" href="#__codelineno-example-14"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOjCnqEu92Fr1Mu51TzBic-CsTKlA.woff2
+</span><span id="__span-example-15"><a id="__codelineno-example-15" name="__codelineno-example-15" href="#__codelineno-example-15"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOjCnqEu92Fr1Mu51TzBic0CsTKlA.woff2
+</span><span id="__span-example-16"><a id="__codelineno-example-16" name="__codelineno-example-16" href="#__codelineno-example-16"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOjCnqEu92Fr1Mu51TzBic1CsTKlA.woff2
+</span><span id="__span-example-17"><a id="__codelineno-example-17" name="__codelineno-example-17" href="#__codelineno-example-17"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOjCnqEu92Fr1Mu51TzBic2CsTKlA.woff2
+</span><span id="__span-example-18"><a id="__codelineno-example-18" name="__codelineno-example-18" href="#__codelineno-example-18"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOjCnqEu92Fr1Mu51TzBic3CsTKlA.woff2
+</span><span id="__span-example-19"><a id="__codelineno-example-19" name="__codelineno-example-19" href="#__codelineno-example-19"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOjCnqEu92Fr1Mu51TzBic5CsTKlA.woff2
+</span><span id="__span-example-20"><a id="__codelineno-example-20" name="__codelineno-example-20" href="#__codelineno-example-20"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOjCnqEu92Fr1Mu51TzBic6CsQ.woff2
+</span><span id="__span-example-21"><a id="__codelineno-example-21" name="__codelineno-example-21" href="#__codelineno-example-21"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOkCnqEu92Fr1Mu51xEIzIFKw.woff2
+</span><span id="__span-example-22"><a id="__codelineno-example-22" name="__codelineno-example-22" href="#__codelineno-example-22"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOkCnqEu92Fr1Mu51xFIzIFKw.woff2
+</span><span id="__span-example-23"><a id="__codelineno-example-23" name="__codelineno-example-23" href="#__codelineno-example-23"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOkCnqEu92Fr1Mu51xGIzIFKw.woff2
+</span><span id="__span-example-24"><a id="__codelineno-example-24" name="__codelineno-example-24" href="#__codelineno-example-24"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOkCnqEu92Fr1Mu51xHIzIFKw.woff2
+</span><span id="__span-example-25"><a id="__codelineno-example-25" name="__codelineno-example-25" href="#__codelineno-example-25"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOkCnqEu92Fr1Mu51xIIzI.woff2
+</span><span id="__span-example-26"><a id="__codelineno-example-26" name="__codelineno-example-26" href="#__codelineno-example-26"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOkCnqEu92Fr1Mu51xLIzIFKw.woff2
+</span><span id="__span-example-27"><a id="__codelineno-example-27" name="__codelineno-example-27" href="#__codelineno-example-27"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOkCnqEu92Fr1Mu51xMIzIFKw.woff2
+</span><span id="__span-example-28"><a id="__codelineno-example-28" name="__codelineno-example-28" href="#__codelineno-example-28"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2
+</span><span id="__span-example-29"><a id="__codelineno-example-29" name="__codelineno-example-29" href="#__codelineno-example-29"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOlCnqEu92Fr1MmSU5fBBc4.woff2
+</span><span id="__span-example-30"><a id="__codelineno-example-30" name="__codelineno-example-30" href="#__codelineno-example-30"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOlCnqEu92Fr1MmSU5fBxc4EsA.woff2
+</span><span id="__span-example-31"><a id="__codelineno-example-31" name="__codelineno-example-31" href="#__codelineno-example-31"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOlCnqEu92Fr1MmSU5fCBc4EsA.woff2
+</span><span id="__span-example-32"><a id="__codelineno-example-32" name="__codelineno-example-32" href="#__codelineno-example-32"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2
+</span><span id="__span-example-33"><a id="__codelineno-example-33" name="__codelineno-example-33" href="#__codelineno-example-33"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOlCnqEu92Fr1MmSU5fChc4EsA.woff2
+</span><span id="__span-example-34"><a id="__codelineno-example-34" name="__codelineno-example-34" href="#__codelineno-example-34"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOlCnqEu92Fr1MmSU5fCxc4EsA.woff2
+</span><span id="__span-example-35"><a id="__codelineno-example-35" name="__codelineno-example-35" href="#__codelineno-example-35"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOlCnqEu92Fr1MmWUlfABc4EsA.woff2
+</span><span id="__span-example-36"><a id="__codelineno-example-36" name="__codelineno-example-36" href="#__codelineno-example-36"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOlCnqEu92Fr1MmWUlfBBc4.woff2
+</span><span id="__span-example-37"><a id="__codelineno-example-37" name="__codelineno-example-37" href="#__codelineno-example-37"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOlCnqEu92Fr1MmWUlfBxc4EsA.woff2
+</span><span id="__span-example-38"><a id="__codelineno-example-38" name="__codelineno-example-38" href="#__codelineno-example-38"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOlCnqEu92Fr1MmWUlfCBc4EsA.woff2
+</span><span id="__span-example-39"><a id="__codelineno-example-39" name="__codelineno-example-39" href="#__codelineno-example-39"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOlCnqEu92Fr1MmWUlfCRc4EsA.woff2
+</span><span id="__span-example-40"><a id="__codelineno-example-40" name="__codelineno-example-40" href="#__codelineno-example-40"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOlCnqEu92Fr1MmWUlfChc4EsA.woff2
+</span><span id="__span-example-41"><a id="__codelineno-example-41" name="__codelineno-example-41" href="#__codelineno-example-41"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOlCnqEu92Fr1MmWUlfCxc4EsA.woff2
+</span><span id="__span-example-42"><a id="__codelineno-example-42" name="__codelineno-example-42" href="#__codelineno-example-42"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOmCnqEu92Fr1Mu4WxKOzY.woff2
+</span><span id="__span-example-43"><a id="__codelineno-example-43" name="__codelineno-example-43" href="#__codelineno-example-43"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOmCnqEu92Fr1Mu4mxK.woff2
+</span><span id="__span-example-44"><a id="__codelineno-example-44" name="__codelineno-example-44" href="#__codelineno-example-44"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOmCnqEu92Fr1Mu5mxKOzY.woff2
+</span><span id="__span-example-45"><a id="__codelineno-example-45" name="__codelineno-example-45" href="#__codelineno-example-45"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOmCnqEu92Fr1Mu72xKOzY.woff2
+</span><span id="__span-example-46"><a id="__codelineno-example-46" name="__codelineno-example-46" href="#__codelineno-example-46"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOmCnqEu92Fr1Mu7GxKOzY.woff2
+</span><span id="__span-example-47"><a id="__codelineno-example-47" name="__codelineno-example-47" href="#__codelineno-example-47"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>├─<span class="w"> </span>KFOmCnqEu92Fr1Mu7WxKOzY.woff2
+</span><span id="__span-example-48"><a id="__codelineno-example-48" name="__codelineno-example-48" href="#__codelineno-example-48"></a><span class="w">   </span>│<span class="w">  </span>│<span class="w">  </span>└─<span class="w"> </span>KFOmCnqEu92Fr1Mu7mxKOzY.woff2
+</span><span id="__span-example-49"><a id="__codelineno-example-49" name="__codelineno-example-49" href="#__codelineno-example-49"></a><span class="w">   </span>│<span class="w">  </span>└─<span class="w"> </span>robotomono/v13/
+</span><span id="__span-example-50"><a id="__codelineno-example-50" name="__codelineno-example-50" href="#__codelineno-example-50"></a><span class="w">   </span>│<span class="w">     </span>├─<span class="w"> </span>L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSV0mf0h.woff2
+</span><span id="__span-example-51"><a id="__codelineno-example-51" name="__codelineno-example-51" href="#__codelineno-example-51"></a><span class="w">   </span>│<span class="w">     </span>├─<span class="w"> </span>L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSZ0mf0h.woff2
+</span><span id="__span-example-52"><a id="__codelineno-example-52" name="__codelineno-example-52" href="#__codelineno-example-52"></a><span class="w">   </span>│<span class="w">     </span>├─<span class="w"> </span>L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSd0mf0h.woff2
+</span><span id="__span-example-53"><a id="__codelineno-example-53" name="__codelineno-example-53" href="#__codelineno-example-53"></a><span class="w">   </span>│<span class="w">     </span>├─<span class="w"> </span>L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSh0mQ.woff2
+</span><span id="__span-example-54"><a id="__codelineno-example-54" name="__codelineno-example-54" href="#__codelineno-example-54"></a><span class="w">   </span>│<span class="w">     </span>├─<span class="w"> </span>L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSt0mf0h.woff2
+</span><span id="__span-example-55"><a id="__codelineno-example-55" name="__codelineno-example-55" href="#__codelineno-example-55"></a><span class="w">   </span>│<span class="w">     </span>├─<span class="w"> </span>L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSx0mf0h.woff2
+</span><span id="__span-example-56"><a id="__codelineno-example-56" name="__codelineno-example-56" href="#__codelineno-example-56"></a><span class="w">   </span>│<span class="w">     </span>├─<span class="w"> </span>L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtElOUlYIw.woff2
+</span><span id="__span-example-57"><a id="__codelineno-example-57" name="__codelineno-example-57" href="#__codelineno-example-57"></a><span class="w">   </span>│<span class="w">     </span>├─<span class="w"> </span>L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtEleUlYIw.woff2
+</span><span id="__span-example-58"><a id="__codelineno-example-58" name="__codelineno-example-58" href="#__codelineno-example-58"></a><span class="w">   </span>│<span class="w">     </span>├─<span class="w"> </span>L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtEluUlYIw.woff2
+</span><span id="__span-example-59"><a id="__codelineno-example-59" name="__codelineno-example-59" href="#__codelineno-example-59"></a><span class="w">   </span>│<span class="w">     </span>├─<span class="w"> </span>L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtEm-Ul.woff2
+</span><span id="__span-example-60"><a id="__codelineno-example-60" name="__codelineno-example-60" href="#__codelineno-example-60"></a><span class="w">   </span>│<span class="w">     </span>├─<span class="w"> </span>L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtEmOUlYIw.woff2
+</span><span id="__span-example-61"><a id="__codelineno-example-61" name="__codelineno-example-61" href="#__codelineno-example-61"></a><span class="w">   </span>│<span class="w">     </span>└─<span class="w"> </span>L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtEn-UlYIw.woff2
+</span><span id="__span-example-62"><a id="__codelineno-example-62" name="__codelineno-example-62" href="#__codelineno-example-62"></a><span class="w">   </span>└─<span class="w"> </span>polyfill.io/v3/polyfill.min.js
+</span></code></pre></div>
+</details>
+<h4 id="advanced-settings">Advanced settings<a class="headerlink" href="#advanced-settings" title="Permanent link">¶</a></h4>
+<!-- md:sponsors -->
+<!-- md:version insiders-4.50.0 -->
+
+<p>The following advanced settings are currently reserved to our <a href="../../insiders/">sponsors</a>. They are entirely optional, and don't affect the functionality of
+the blog, but can be helpful for customizations:</p>
+<ul>
+<li><a href="../../plugins/privacy/#config.log"><code>log</code></a></li>
+<li><a href="../../plugins/privacy/#config.log_level"><code>log_level</code></a></li>
+</ul>
+<p>We'll add more settings here, as we discover new use cases.</p>
+<h2 id="customization">Customization<a class="headerlink" href="#customization" title="Permanent link">¶</a></h2>
+<h3 id="custom-cookies">Custom cookies<a class="headerlink" href="#custom-cookies" title="Permanent link">¶</a></h3>
+<!-- md:version 8.4.0 -->
+<!-- md:example custom-cookies -->
+
+<p>If you've customized the <a href="#cookie-consent">cookie consent</a> and added a <code>custom</code> cookie, the user
+will be prompted to accept or reject your custom cookie. Once the user accepts
+or rejects the cookie consent, or <a href="#change-cookie-settings">changes the settings</a>, the page reloads<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.
+Use <a href="../../customization/#additional-javascript">additional JavaScript</a> to query the result:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="custom-cookies-docsjavascriptsconsentjs" name="__tabbed_2" type="radio"><input id="custom-cookies-mkdocsyml" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="custom-cookies-docsjavascriptsconsentjs"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4 1.75C4 .784 4.784 0 5.75 0h5.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v8.586A1.75 1.75 0 0 1 14.25 15h-9a.75.75 0 0 1 0-1.5h9a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 10 4.25V1.5H5.75a.25.25 0 0 0-.25.25v2.5a.75.75 0 0 1-1.5 0Zm1.72 4.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734l1.47-1.47-1.47-1.47a.75.75 0 0 1 0-1.06M3.28 7.78 1.81 9.25l1.47 1.47a.75.75 0 0 1-.018 1.042.75.75 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042m8.22-6.218V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914z"></path></svg></span> <code>docs/javascripts/consent.js</code></label><label for="custom-cookies-mkdocsyml"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4 1.75C4 .784 4.784 0 5.75 0h5.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v8.586A1.75 1.75 0 0 1 14.25 15h-9a.75.75 0 0 1 0-1.5h9a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 10 4.25V1.5H5.75a.25.25 0 0 0-.25.25v2.5a.75.75 0 0 1-1.5 0Zm1.72 4.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734l1.47-1.47-1.47-1.47a.75.75 0 0 1 0-1.06M3.28 7.78 1.81 9.25l1.47 1.47a.75.75 0 0 1-.018 1.042.75.75 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042m8.22-6.218V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914z"></path></svg></span> <code>mkdocs.yml</code></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">consent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">__md_get</span><span class="p">(</span><span class="s2">"__consent"</span><span class="p">)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">consent</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">consent</span><span class="p">.</span><span class="nx">custom</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="cm">/* The user accepted the cookie */</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="cm">/* The user rejected the cookie */</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">extra_javascript</span><span class="p">:</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">javascripts/consent.js</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>We reload the page to make interop with custom cookies simpler. If Material
+for MkDocs would implement a callback-based approach, the author would need
+to make sure to correctly update all scripts that use cookies. Additionally,
+the cookie consent is only answered initially, which is why we consider this
+to be a good trade-off of DX and UX.&nbsp;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+    
+  
+    <div class="md-footer-business md-typeset">
+      <div class="md-footer-business__row">
+        <div class="md-footer-business__contact">
+          <h3 class="md-footer-business__section-title">Contact</h3>
+          <div class="md-footer-business__inner">
+            <div class="md-footer-business__column">
+              
+                <span class="md-footer-business__item">
+                  <span class="md-footer-business__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"></path></svg></span>
+                  <span>
+                    <span class="md-footer-business__label">Email</span>
+                    <a href="mailto:specklessas@gmail.com" class="md-footer-business__link">specklessas@gmail.com</a>
+                  </span>
+                </span>
+              
+            </div>
+            <div class="md-footer-business__column">
+              
+                <span class="md-footer-business__item">
+                  <span class="md-footer-business__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.28-.28.67-.36 1.02-.25 1.12.37 2.32.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02z"></path></svg></span>
+                  <span>
+                    <span class="md-footer-business__label">Phone</span>
+                    <a href="tel:2622182794" class="md-footer-business__link">262-218-2794</a>
+                  </span>
+                </span>
+              
+            </div>
+            <div class="md-footer-business__column">
+              
+                <span class="md-footer-business__item">
+                  <span class="md-footer-business__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 11.5A2.5 2.5 0 0 1 9.5 9 2.5 2.5 0 0 1 12 6.5 2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7"></path></svg></span>
+                  <span>
+                    <span class="md-footer-business__label">Address</span>
+                    <span class="md-footer-business__text">S34W29939 Little John Dr. # 4, Waukesha, WI 53189</span>
+                  </span>
+                </span>
+              
+            </div>
+            <div class="md-footer-business__column">
+              
+                <span class="md-footer-business__item">
+                  <span class="md-footer-business__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"></path></svg></span>
+                  <span>
+                    <span class="md-footer-business__label">Hours</span>
+                    <span class="md-footer-business__text">Mon - Fri: 9:00 AM - 5:00 PM</span>
+                  </span>
+                </span>
+              
+            </div>
+          </div>
+        </div>
+        
+        <div class="md-footer-business__map">
+          <!-- <h3 class="md-footer-business__section-title">Map</h3> -->
+          
+          
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2918.9050766385694!2d-88.34737228803604!3d42.980273171021594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8804ff9da3be63e5%3A0x5cfa18e05992e8b7!2sSpeckless%20Auto%20Spa!5e0!3m2!1sen!2sus!4v1769878437091!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map">
+          </iframe>
+          
+        </div>
+        
+      </div>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Speckless Auto Spa © 2026 | All Rights Reserved
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/squidfunk" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://hub.docker.com/r/squidfunk/mkdocs-material/" target="_blank" rel="noopener" title="hub.docker.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1zm0-204.3h-66.1v60.7h66.1zm78.2 144.8H362v59.4h66.1zm-156.3-72.1h-66.1v60.1h66.1zm78.1 0h-66.1v60.1h66.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1zm78.1 0h-66.1v59.4h66.1zm-78.1-72.1h-66.1v60.1h66.1z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/mkdocs-material/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 444.7a20.4 20.4 0 1 1 0-40.7 20.4 20.4 0 1 1 0 40.7M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.6-183.4a20.4 20.4 0 1 1 0 40.8 20.4 20.4 0 1 1 0-40.8"></path></svg>
+    </a>
+  
+    
+    
+      
+    
+    
+    
+      
+      
+    
+    <a href="https://fosstodon.org/@squidfunk" target="_blank" rel="noopener me" title="fosstodon.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M433 179.1c0-97.2-63.7-125.7-63.7-125.7-62.5-28.7-228.6-28.4-290.5 0 0 0-63.7 28.5-63.7 125.7 0 115.7-6.6 259.4 105.6 289.1 40.5 10.7 75.3 13 103.3 11.4 50.8-2.8 79.3-18.1 79.3-18.1l-1.7-36.9s-36.3 11.4-77.1 10.1c-40.4-1.4-83-4.4-89.6-54-.6-4.6-.9-9.3-.9-13.9 85.6 20.9 158.7 9.1 178.7 6.7 56.1-6.7 105-41.3 111.2-72.9 9.8-49.8 9-121.5 9-121.5zm-75.1 125.2h-46.6V190.1c0-49.7-64-51.6-64 6.9v62.5H201V197c0-58.5-64-56.6-64-6.9v114.2H90.3c0-122.1-5.2-147.9 18.4-175 25.9-28.9 79.8-30.8 103.8 6.1l11.6 19.5 11.6-19.5c24.1-37.1 78.1-34.8 103.8-6.1 23.7 27.3 18.4 53 18.4 175"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/squidfunk" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+  
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+
+  <!-- Extra JavaScript (can't be set in mkdocs.yml due to content hash) -->
+  <script src="../../assets/javascripts/custom.js"></script>
+
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": true, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
